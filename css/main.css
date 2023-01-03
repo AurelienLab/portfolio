@@ -62,6 +62,10 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 main {
   position: absolute;
 }
@@ -71,7 +75,16 @@ main {
   font-size: 2rem;
 }
 
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .card__container {
+  animation: appear 600ms both;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -80,11 +93,83 @@ main {
   perspective: 800px;
   background: transparent;
 }
+.card__container:nth-of-type(0n) {
+  animation-delay: 0ms;
+}
+.card__container:nth-of-type(1n) {
+  animation-delay: 200ms;
+}
+.card__container:nth-of-type(2n) {
+  animation-delay: 400ms;
+}
+.card__container:nth-of-type(3n) {
+  animation-delay: 600ms;
+}
+.card__container:nth-of-type(4n) {
+  animation-delay: 800ms;
+}
+.card__container:nth-of-type(5n) {
+  animation-delay: 1000ms;
+}
+.card__container:nth-of-type(6n) {
+  animation-delay: 1200ms;
+}
+.card__container:nth-of-type(7n) {
+  animation-delay: 1400ms;
+}
+.card__container:nth-of-type(8n) {
+  animation-delay: 1600ms;
+}
+.card__container:nth-of-type(9n) {
+  animation-delay: 1800ms;
+}
+.card__container:nth-of-type(10n) {
+  animation-delay: 2000ms;
+}
+.card__container:nth-of-type(11n) {
+  animation-delay: 2200ms;
+}
+.card__container:nth-of-type(12n) {
+  animation-delay: 2400ms;
+}
+.card__container:nth-of-type(13n) {
+  animation-delay: 2600ms;
+}
+.card__container:nth-of-type(14n) {
+  animation-delay: 2800ms;
+}
+.card__container:nth-of-type(15n) {
+  animation-delay: 3000ms;
+}
+.card__container:nth-of-type(16n) {
+  animation-delay: 3200ms;
+}
+.card__container:nth-of-type(17n) {
+  animation-delay: 3400ms;
+}
+.card__container:nth-of-type(18n) {
+  animation-delay: 3600ms;
+}
+.card__container:nth-of-type(19n) {
+  animation-delay: 3800ms;
+}
+.card__container:nth-of-type(20n) {
+  animation-delay: 4000ms;
+}
+.card__container:hover {
+  z-index: 10;
+}
 .card__container:hover .card {
   animation: flip-in 850ms linear both;
 }
 .card__container:hover .card__shadow {
   animation: shadow-in 850ms ease-in-out both;
+}
+.card__container.initial .card {
+  animation-duration: 0ms;
+}
+.card__container.initial .card__shadow {
+  animation-duration: 0ms;
 }
 
 .card {
@@ -93,7 +178,7 @@ main {
   height: 100%;
   background: #FFFDED;
   position: relative;
-  color: #001059;
+  color: #000680;
   transform-style: preserve-3d;
   transform: perspective(1000px) translateZ(0) rotateY(0deg);
   animation: flip-out 600ms linear both;
@@ -381,27 +466,33 @@ main {
   color: #758BFD;
 }
 .header__menu__item:nth-of-type(0n) {
-  clip-path: polygon(6% 2%, 99% 2%, 97% 96%, 4% 98%);
+  clip-path: polygon(1% 4%, 94% 3%, 98% 97%, 3% 99%);
 }
 .header__menu__item:nth-of-type(1n) {
-  clip-path: polygon(4% 1%, 98% 4%, 95% 97%, 3% 96%);
+  clip-path: polygon(4% 1%, 99% 4%, 98% 96%, 3% 98%);
 }
 .header__menu__item:nth-of-type(2n) {
-  clip-path: polygon(5% 1%, 99% 4%, 96% 96%, 3% 98%);
+  clip-path: polygon(4% 1%, 95% 4%, 99% 98%, 6% 99%);
 }
 .header__menu__item:nth-of-type(3n) {
-  clip-path: polygon(4% 4%, 99% 3%, 99% 97%, 3% 96%);
+  clip-path: polygon(6% 1%, 95% 2%, 94% 96%, 2% 99%);
 }
 .header__menu__item:nth-of-type(4n) {
-  clip-path: polygon(2% 4%, 96% 2%, 98% 97%, 4% 98%);
+  clip-path: polygon(4% 3%, 97% 3%, 96% 99%, 1% 98%);
 }
 .header__menu__item:nth-of-type(5n) {
-  clip-path: polygon(5% 2%, 98% 4%, 95% 99%, 4% 97%);
+  clip-path: polygon(1% 3%, 96% 1%, 99% 99%, 5% 99%);
 }
 
 #about-me {
   display: flex;
   scroll-padding-top: 90px;
+}
+#about-me.animate .heading {
+  animation: appear-left 800ms ease-in-out both;
+}
+#about-me.animate p {
+  animation: appear-right 800ms 300ms ease-in-out both;
 }
 #about-me .heading {
   display: flex;
@@ -410,13 +501,37 @@ main {
   justify-content: center;
   background-color: #FFA800;
   color: #FFFDED;
+  opacity: 0;
+  transform: translateX(-50%);
 }
 #about-me p {
   width: 50%;
   color: #FFA800;
   padding: 60px;
+  opacity: 0;
+  transform: translateX(50%);
 }
 
+@keyframes appear-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes appear-right {
+  from {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 #my-work {
   margin-top: 60px;
 }
@@ -427,13 +542,21 @@ main {
   width: fit-content;
   margin: auto;
   padding: 18px 35px;
-  clip-path: polygon(7% 3%, 98% 1%, 97% 97%, 2% 96%);
+  clip-path: polygon(7% 2%, 95% 1%, 97% 98%, 3% 98%);
+  opacity: 0;
+}
+#my-work .heading.animate {
+  animation: appear 700ms 800ms both ease-in-out;
 }
 
 .folder {
   margin: 30px auto;
   margin-bottom: 50px;
   width: 90%;
+  opacity: 0;
+}
+.folder.animate {
+  animation: appear 1000ms 800ms both ease-in-out;
 }
 
 .folder__tab-list {
@@ -445,6 +568,17 @@ main {
   align-items: flex-end;
 }
 
+.folder__tab__container {
+  margin-left: -1.5%;
+  margin-right: -1.5%;
+}
+.folder__tab__container:first-of-type {
+  margin-left: 0;
+}
+.folder__tab__container:last-of-type {
+  margin-right: 0;
+}
+
 .folder__tab {
   padding: 15px 80px 25px;
   font-family: "Baloo 2", cursive;
@@ -453,31 +587,25 @@ main {
   cursor: pointer;
   margin-bottom: -10px;
   position: relative;
-  margin-left: -3%;
+  transition: margin-bottom 250ms ease-in-out;
 }
 .folder__tab--all {
   background-color: #00FFF0;
-  clip-path: polygon(3% 0, 97% 0, 98% 100%, 2% 100%);
+  clip-path: polygon(6% 0, 96% 0, 97% 100%, 5% 100%);
 }
 .folder__tab--courses {
   background-color: #FFC700;
-  clip-path: polygon(6% 0, 97% 0, 98% 100%, 1% 100%);
+  clip-path: polygon(6% 0, 98% 0, 94% 100%, 6% 100%);
 }
 .folder__tab--freelance {
   background-color: #FAFF00;
-  clip-path: polygon(6% 0, 97% 0, 95% 100%, 6% 100%);
+  clip-path: polygon(6% 0, 95% 0, 95% 100%, 6% 100%);
 }
 .folder__tab:hover, .folder__tab.active {
-  margin-bottom: 0;
+  margin-bottom: -1px;
 }
 .folder__tab.active {
   z-index: 2;
-}
-.folder__tab:first-of-type {
-  margin-left: 0;
-}
-.folder__tab:last-of-type {
-  margin-right: 0;
 }
 
 .folder__content {
@@ -485,13 +613,16 @@ main {
 }
 
 .folder__tab-content {
-  position: relative;
+  z-index: -1;
+  display: grid;
+  position: absolute;
   top: 0;
   height: fit-content;
   left: 0;
   width: 100%;
-  display: none;
+  opacity: 0;
   padding: 50px;
+  transition: opacity 250ms ease-in-out;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 25px;
   grid-row-gap: 25px;
@@ -506,7 +637,19 @@ main {
   background-color: #FAFF00;
 }
 .folder__tab-content.active {
-  display: grid;
+  z-index: 1;
+  opacity: 1;
+}
+
+@keyframes appear-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
