@@ -1,0 +1,12 @@
+:root {
+  font-family: $paragraph-font;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.heading {
+  font-family: $heading-font;
+  font-size: $heading-font-size;
+}

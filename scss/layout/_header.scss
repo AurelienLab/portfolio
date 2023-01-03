@@ -1,0 +1,74 @@
+.header {
+  position: sticky;
+  top: 0;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: map-get($colors, primary);
+
+  &.step1 {
+    & .header__menu {
+      ul {
+        flex-direction: row;
+      }
+    }
+  }
+  &.step2 {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left: 15px;
+    & .header__title {
+      font-size: 1.3rem;
+      letter-spacing: -1px;
+      margin-bottom: 0;
+    }
+    & .header__menu__item {
+      a {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.header__title {
+  transition: font-size 150ms ease-in-out;
+  font-family: $heading-font;
+  color: map-get($colors, text-light);
+  font-size: 5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.2rem;
+  margin-bottom: 35px;
+}
+
+.header__menu {
+  ul {
+    display: flex;
+    list-style-type: none;
+    flex-direction: column;
+  }
+}
+
+.header__menu__item {
+  font-family: $heading-font;
+  text-align: center;
+  a {
+    display: block;
+    font-size: $heading-font-size;
+    color: map-get($colors, text-light);
+    width: 100%;
+    padding: 18px 35px;
+  }
+
+  &:hover {
+    background-color: map-get($colors, text-light);
+
+    a {
+      color: map-get($colors, secondary);
+    }
+  }
+
+  @include clip-path-generation();
+}

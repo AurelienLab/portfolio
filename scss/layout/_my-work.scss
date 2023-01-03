@@ -1,0 +1,109 @@
+#my-work {
+  margin-top: 60px;
+
+  .heading {
+    color: map-get($colors, text-light);
+    text-align: center;
+    background: map-get($colors, text-dark);
+    width: fit-content;
+    margin: auto;
+    padding: 18px 35px;
+    clip-path: random-clip-path();
+  }
+}
+
+.folder {
+  margin: 30px auto;
+  margin-bottom: 50px;
+  width: 90%;
+}
+
+.folder__tab-list {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.folder__tab__container {
+  &.active {
+  }
+}
+
+.folder__tab {
+  padding: 15px 80px 25px;
+  font-family: $paragraph-font;
+  color: map-get($colors, text-dark);
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: -10px;
+  position: relative;
+  margin-left: -3%;
+
+  &--all {
+    background-color: map-get($myWorksColor, all);
+    clip-path: random-clip-path($x-max: 6, $y-max: 0);
+  }
+
+  &--courses {
+    background-color: map-get($myWorksColor, courses);
+    clip-path: random-clip-path($x-max: 6, $y-max: 0);
+  }
+
+  &--freelance {
+    background-color: map-get($myWorksColor, freelance);
+    clip-path: random-clip-path($x-max: 6, $y-max: 0);
+  }
+
+  &:hover, &.active {
+    margin-bottom: 0;
+  }
+
+  &.active {
+    z-index: 2;
+  }
+
+  &:first-of-type {
+    margin-left: 0;
+  }
+  &:last-of-type {
+    margin-right: 0;
+  }
+
+}
+
+.folder__content {
+  position: relative;
+}
+
+.folder__tab-content {
+  position: relative;
+  top: 0;
+  height: fit-content;
+  left: 0;
+  width: 100%;
+  display: none;
+  padding: 50px;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+
+  &--all {
+    background-color: map-get($myWorksColor, all);;
+  }
+
+  &--courses {
+    background-color: map-get($myWorksColor, courses);;
+  }
+
+  &--freelance {
+    background-color: map-get($myWorksColor, freelance);;
+  }
+
+  &.active {
+    display: grid;
+  }
+}

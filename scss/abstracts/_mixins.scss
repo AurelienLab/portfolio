@@ -1,0 +1,7 @@
+@mixin clip-path-generation ($x-max: 6, $y-max: 4){
+  @for $i from 0 through 5 {
+    &:nth-of-type(#{$i}n) {
+      clip-path: random-clip-path($x-max, $y-max);
+    }
+  }
+}

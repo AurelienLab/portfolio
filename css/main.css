@@ -1,0 +1,505 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&family=Passion+One&display=swap");
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
+footer, header, nav, section, main {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  font-size: 23px;
+}
+
+:root {
+  font-family: "Baloo 2", cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.heading {
+  font-family: "Passion One", cursive;
+  font-size: 2rem;
+}
+
+.card__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 250px;
+  perspective: 800px;
+  background: transparent;
+}
+.card__container:hover .card {
+  animation: flip-in 850ms linear both;
+}
+.card__container:hover .card__shadow {
+  animation: shadow-in 850ms ease-in-out both;
+}
+
+.card {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: #FFFDED;
+  position: relative;
+  color: #001059;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) translateZ(0) rotateY(0deg);
+  animation: flip-out 600ms linear both;
+}
+
+.card__shadow {
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
+  background: #8f8c8c;
+  border-radius: 15px;
+  transform: translateY(5px);
+  animation: shadow-out 600ms ease-in-out both;
+}
+
+.card__back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  background: #FFFDED;
+}
+.card__back h4 {
+  font-family: "Baloo 2", cursive;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+.card__back p {
+  flex-grow: 1;
+  font-size: 0.7rem;
+}
+.card__back .card__back__icons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: center;
+  padding: 15px;
+}
+.card__back .card__back__icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000680;
+  background: #FCE762;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 0.6rem;
+}
+.card__back .card__back__icons a:hover {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.card__back .card__back__keywords {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  font-size: 0.6rem;
+  gap: 5px;
+}
+.card__back .card__back__keywords li {
+  background-color: #FF0099;
+}
+.card__back .card__back__keywords li a {
+  color: #FFFDED;
+  display: block;
+  padding: 5px 8px;
+}
+.card__back .card__back__keywords li:hover {
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.card__front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 10px;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+.card__front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card__front .front__title {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  clip-path: polygon(30% 0, 100% 100%, 100% 0);
+  padding-right: 15px;
+}
+.card__front .front__title--all {
+  background-color: rgba(0, 255, 240, 0.8);
+}
+.card__front .front__title--courses {
+  background-color: rgba(255, 199, 0, 0.8);
+}
+.card__front .front__title--freelance {
+  background-color: rgba(250, 255, 0, 0.8);
+}
+.card__front .shape {
+  width: 100%;
+  height: 100%;
+  shape-outside: polygon(0 0, 30% 0, 100% 100%, 0% 100%);
+  shape-margin: 10px;
+  float: left;
+}
+.card__front h4 {
+  position: relative;
+  color: #000680;
+  font-size: 1rem;
+  text-align: right;
+  padding-top: 15px;
+}
+
+@keyframes shadow-in {
+  0% {
+    opacity: 1;
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+  25%, 30% {
+    opacity: 0.5;
+    filter: blur(15px);
+    transform: translateY(15px) scaleX(1.05);
+  }
+  55% {
+    opacity: 0.4;
+    filter: blur(35px);
+    transform: translateY(15px) scaleX(0.25);
+  }
+  80% {
+    opacity: 0.2;
+    filter: blur(35px);
+    transform: translateY(15px) scaleX(1.05);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+}
+@keyframes shadow-out {
+  0% {
+    opacity: 1;
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+  25%, 30% {
+    opacity: 0.5;
+    filter: blur(15px);
+    transform: translateY(15px) scaleX(1.05);
+  }
+  55% {
+    opacity: 0.4;
+    filter: blur(35px);
+    transform: translateY(15px) scaleX(0.25);
+  }
+  80% {
+    opacity: 0.2;
+    filter: blur(35px);
+    transform: translateY(15px) scaleX(1.05);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+}
+@keyframes flip-in {
+  0% {
+    transform-origin: bottom center;
+    transform: translateZ(0);
+    animation-timing-function: ease-out;
+  }
+  15% {
+    transform: rotateY(7deg);
+  }
+  45% {
+    transform-origin: bottom center;
+    transform: translateZ(100px) rotateX(-10deg) rotateY(40deg);
+    animation-timing-function: ease-out;
+  }
+  90% {
+    transform: translateZ(100px) rotateY(180deg);
+  }
+  100% {
+    transform: translateZ(0) rotateY(180deg);
+  }
+}
+@keyframes flip-out {
+  0% {
+    transform: translateZ(0) rotateY(180deg);
+    transform-origin: bottom center;
+    animation-timing-function: ease-out;
+  }
+  15% {
+    transform: rotateY(173deg);
+  }
+  45% {
+    transform-origin: bottom center;
+    transform: translateZ(100px) rotateX(-10deg) rotateY(140deg);
+    animation-timing-function: ease-out;
+  }
+  90% {
+    transform: translateZ(100px) rotateY(0deg);
+  }
+  100% {
+    transform: translateZ(0) rotateY(0deg);
+  }
+}
+.header {
+  position: sticky;
+  top: 0;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #FF0099;
+}
+.header.step1 .header__menu ul {
+  flex-direction: row;
+}
+.header.step2 {
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 15px;
+}
+.header.step2 .header__title {
+  font-size: 1.3rem;
+  letter-spacing: -1px;
+  margin-bottom: 0;
+}
+.header.step2 .header__menu__item a {
+  font-size: 1rem;
+}
+
+.header__title {
+  transition: font-size 150ms ease-in-out;
+  font-family: "Passion One", cursive;
+  color: #FFFDED;
+  font-size: 5rem;
+  text-transform: uppercase;
+  letter-spacing: -0.2rem;
+  margin-bottom: 35px;
+}
+
+.header__menu ul {
+  display: flex;
+  list-style-type: none;
+  flex-direction: column;
+}
+
+.header__menu__item {
+  font-family: "Passion One", cursive;
+  text-align: center;
+}
+.header__menu__item a {
+  display: block;
+  font-size: 2rem;
+  color: #FFFDED;
+  width: 100%;
+  padding: 18px 35px;
+}
+.header__menu__item:hover {
+  background-color: #FFFDED;
+}
+.header__menu__item:hover a {
+  color: #758BFD;
+}
+.header__menu__item:nth-of-type(0n) {
+  clip-path: polygon(3% 3%, 96% 4%, 98% 96%, 2% 98%);
+}
+.header__menu__item:nth-of-type(1n) {
+  clip-path: polygon(2% 4%, 95% 1%, 98% 97%, 3% 99%);
+}
+.header__menu__item:nth-of-type(2n) {
+  clip-path: polygon(2% 1%, 97% 2%, 96% 97%, 2% 99%);
+}
+.header__menu__item:nth-of-type(3n) {
+  clip-path: polygon(2% 4%, 94% 1%, 99% 98%, 5% 96%);
+}
+.header__menu__item:nth-of-type(4n) {
+  clip-path: polygon(6% 4%, 99% 4%, 95% 99%, 4% 98%);
+}
+.header__menu__item:nth-of-type(5n) {
+  clip-path: polygon(4% 3%, 96% 2%, 95% 96%, 4% 97%);
+}
+
+#about-me {
+  display: flex;
+}
+#about-me .heading {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFA800;
+  color: #FFFDED;
+}
+#about-me p {
+  width: 50%;
+  color: #FFA800;
+  padding: 60px;
+}
+
+#my-work {
+  margin-top: 60px;
+}
+#my-work .heading {
+  color: #FFFDED;
+  text-align: center;
+  background: #000680;
+  width: fit-content;
+  margin: auto;
+  padding: 18px 35px;
+  clip-path: polygon(7% 2%, 95% 4%, 94% 97%, 6% 96%);
+}
+
+.folder {
+  margin: 30px auto;
+  margin-bottom: 50px;
+  width: 90%;
+}
+
+.folder__tab-list {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.folder__tab {
+  padding: 15px 80px 25px;
+  font-family: "Baloo 2", cursive;
+  color: #000680;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: -10px;
+  position: relative;
+  margin-left: -3%;
+}
+.folder__tab--all {
+  background-color: #00FFF0;
+  clip-path: polygon(4% 0, 94% 0, 94% 100%, 6% 100%);
+}
+.folder__tab--courses {
+  background-color: #FFC700;
+  clip-path: polygon(5% 0, 97% 0, 96% 100%, 2% 100%);
+}
+.folder__tab--freelance {
+  background-color: #FAFF00;
+  clip-path: polygon(6% 0, 96% 0, 98% 100%, 6% 100%);
+}
+.folder__tab:hover, .folder__tab.active {
+  margin-bottom: 0;
+}
+.folder__tab.active {
+  z-index: 2;
+}
+.folder__tab:first-of-type {
+  margin-left: 0;
+}
+.folder__tab:last-of-type {
+  margin-right: 0;
+}
+
+.folder__content {
+  position: relative;
+}
+
+.folder__tab-content {
+  position: relative;
+  top: 0;
+  height: fit-content;
+  left: 0;
+  width: 100%;
+  display: none;
+  padding: 50px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 25px;
+  grid-row-gap: 25px;
+}
+.folder__tab-content--all {
+  background-color: #00FFF0;
+}
+.folder__tab-content--courses {
+  background-color: #FFC700;
+}
+.folder__tab-content--freelance {
+  background-color: #FAFF00;
+}
+.folder__tab-content.active {
+  display: grid;
+}
+
+/*# sourceMappingURL=main.css.map */

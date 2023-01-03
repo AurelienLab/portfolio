@@ -1,0 +1,290 @@
+.card__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 250px;
+  perspective: 800px;
+  background: transparent;
+
+  &:hover {
+    .card {
+      animation: flip-in 850ms linear both;
+    }
+    .card__shadow {
+      animation: shadow-in 850ms ease-in-out both;
+    }
+  }
+}
+
+.card {
+  //opacity: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: map-get($colors, text-light);
+  position: relative;
+  color: #001059;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) translateZ(0) rotateY(0deg);
+  animation: flip-out 600ms linear both;
+}
+
+.card__shadow {
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
+  background: #8f8c8c;
+  border-radius: 15px;
+  transform: translateY(5px);
+  animation: shadow-out 600ms ease-in-out both;
+}
+
+.card__back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 15px;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  background: map-get($colors, text-light);
+
+  h4 {
+    font-family: $paragraph-font;
+    font-size: 0.8rem;
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+
+  p {
+    flex-grow: 1;
+    font-size: 0.7rem;
+  }
+
+  .card__back__icons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    justify-content: center;
+    padding: 15px;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: map-get($colors, text-dark);
+      background: #FCE762;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 0.6rem;
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      }
+    }
+  }
+
+  .card__back__keywords {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    font-size: 0.6rem;
+    gap: 5px;
+    li {
+      background-color: map-get($colors, primary);
+      a {
+        color: map-get($colors, text-light);
+        display: block;
+        padding: 5px 8px;
+      }
+
+      &:hover {
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      }
+    }
+  }
+}
+
+.card__front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  padding: 10px;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .front__title {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 10px;
+    right: 10px;
+    clip-path: polygon(30% 0, 100% 100%, 100% 0);
+    padding-right: 15px;
+
+    &--all {
+      background-color: transparentize(map-get($myWorksColor, all), 0.2);
+    }
+
+    &--courses {
+      background-color: transparentize(map-get($myWorksColor, courses), 0.2);
+    }
+
+    &--freelance {
+      background-color: transparentize(map-get($myWorksColor, freelance), 0.2);
+    }
+  }
+  .shape {
+    width: 100%;
+    height: 100%;
+    shape-outside: polygon(0 0, 30% 0, 100% 100%, 0% 100%);;
+    shape-margin: 10px;
+    float: left;
+  }
+
+  h4 {
+    position: relative;
+    color: map-get($colors, text-dark);
+    font-size: 1rem;
+    text-align: right;
+    padding-top: 15px;
+  }
+
+}
+
+@keyframes shadow-in {
+  0% {
+    opacity: 1;
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+
+  25%, 30% {
+    opacity: 0.5;
+    filter: blur(15px);
+    transform: translateY(15px) scaleX(1.05);
+
+  }
+
+  55% {
+    opacity: 0.4;
+    filter: blur(35px);
+    transform: translateY(15px) scaleX(0.25);
+
+  }
+
+  80% {
+    opacity: 0.2;
+    filter: blur(35px);
+    transform: translateY(15px) scaleX(1.05);
+
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+}
+
+@keyframes shadow-out {
+  0% {
+    opacity: 1;
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+
+  25%, 30% {
+    opacity: 0.5;
+    filter: blur(15px);
+    transform: translateY(15px) scaleX(1.05);
+
+  }
+
+  55% {
+    opacity: 0.4;
+    filter: blur(35px);
+    transform: translateY(15px) scaleX(0.25);
+
+  }
+
+  80% {
+    opacity: 0.2;
+    filter: blur(35px);
+    transform: translateY(15px) scaleX(1.05);
+
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(5px);
+    transform: translateY(5px);
+  }
+}
+
+@keyframes flip-in {
+  0% {
+    transform-origin: bottom center;
+    transform: translateZ(0);
+    animation-timing-function: ease-out;
+  }
+
+  15% {
+    transform:  rotateY(7deg);
+
+  }
+
+  45% {
+    transform-origin: bottom center;
+    transform: translateZ(100px) rotateX(-10deg) rotateY(40deg);
+    animation-timing-function: ease-out;
+  }
+
+  90% {
+    transform: translateZ(100px) rotateY(180deg);
+  }
+
+  100% {
+    transform: translateZ(0) rotateY(180deg);
+  }
+}
+
+@keyframes flip-out {
+  0% {
+    transform: translateZ(0) rotateY(180deg);
+    transform-origin: bottom center;
+    animation-timing-function: ease-out;
+  }
+
+  15% {
+    transform:  rotateY(173deg);
+
+  }
+
+  45% {
+    transform-origin: bottom center;
+    transform: translateZ(100px) rotateX(-10deg) rotateY(140deg);
+    animation-timing-function: ease-out;
+  }
+
+  90% {
+    transform: translateZ(100px) rotateY(0deg);
+  }
+
+  100% {
+    transform: translateZ(0) rotateY(0deg);
+  }
+}

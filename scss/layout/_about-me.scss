@@ -1,0 +1,18 @@
+#about-me {
+  display: flex;
+
+  .heading {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    background-color: map-get($colors, tertiary);
+    color: map-get($colors, text-light)
+  }
+
+  p {
+    width: 50%;
+    color: map-get($colors, tertiary);
+    padding: 60px;
+  }
+}

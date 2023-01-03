@@ -1,0 +1,17 @@
+@function random-clip-path($x-max: 7, $y-max: 4) {
+  @if($y-max == 0) {
+    $top-left: (random($x-max) * 1%) 0 ;
+    $top-right: (100% - random($x-max)) 0 ;
+    $bottom-right: (100% - random($x-max)) 100% ;
+    $bottom-left: (random($x-max) * 1%) 100% ;
+    @return polygon($top-left, $top-right, $bottom-right, $bottom-left);
+  }
+
+  $top-left: (random($x-max) * 1%) (random($y-max) * 1%) ;
+  $top-right: (100% - random($x-max)) (random($y-max) * 1%) ;
+  $bottom-right: (100% - random($x-max)) (100% - random($y-max)) ;
+  $bottom-left: (random($x-max) * 1%) (100% - random($y-max)) ;
+
+  @return polygon($top-left, $top-right, $bottom-right, $bottom-left);
+
+}
