@@ -185,10 +185,12 @@ function animateHeader() {
         if(step === 1 && contentDistance<= 0) {
             layout2()
             step = 2
+            return
         }
         if(step === 0 && contentDistance<= 15) {
             layout1()
             step = 1
+            return
         }
     }
     else {
