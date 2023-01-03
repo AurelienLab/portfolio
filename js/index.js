@@ -29,9 +29,26 @@ function handleTabs() {
                 document.querySelector(tab.dataset.target).classList.remove('active')
             }
 
+            const cards = folderContent.querySelectorAll('.card__container')
+            for(const card of cards) {
+                card.classList.add('initial')
+            }
+
             e.currentTarget.classList.add('active')
             e.currentTarget.parentNode.classList.add('active')
             folderContent.classList.add('active')
+
+            handleAppear()
+        })
+    }
+}
+
+function handleAppear() {
+    const cards = document.getElementsByClassName('card__container')
+    for(const card of cards) {
+        card.addEventListener('mouseenter', () => {
+            card.classList.remove('initial')
+            card.removeEventListener('mouseenter')
         })
     }
 }
@@ -42,7 +59,7 @@ function generateSitesList(sites) {
         for(const keyword of site.keywords) {
             keywordsHTML += `<li><a href="#">${keyword}</a></li>`
         }
-        const html = `<div class="card__container">
+        const html = `<div class="card__container initial">
                     <div class="card">
                         <div class="card__front">
                             <img src="${site.imageUrl}">
@@ -83,4 +100,5 @@ function generateSitesList(sites) {
 
         document.getElementById('myWork-all').appendChild(cardNode.cloneNode(true))
     }
+    handleAppear()
 }

@@ -5,3 +5,13 @@
     }
   }
 }
+
+@mixin animate-appear ($duration: 800, $delay: 200){
+  animation: appear #{$duration}ms both;
+  //Apparition progressive des éléments du menu (augmentation du animation-delay à chaque nouvel élément)
+  @for $i from 0 through 20 {
+    &:nth-of-type(#{$i}n) {
+      animation-delay: #{$i * $delay}ms;
+    }
+  }
+}

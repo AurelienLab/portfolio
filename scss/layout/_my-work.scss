@@ -9,6 +9,11 @@
     margin: auto;
     padding: 18px 35px;
     clip-path: random-clip-path();
+    opacity: 0;
+
+    &.animate {
+      animation: appear 700ms 800ms both ease-in-out;
+    }
   }
 }
 
@@ -16,6 +21,11 @@
   margin: 30px auto;
   margin-bottom: 50px;
   width: 90%;
+  opacity: 0;
+
+  &.animate {
+    animation: appear 1000ms 800ms both ease-in-out;
+  }
 }
 
 .folder__tab-list {
@@ -28,7 +38,13 @@
 }
 
 .folder__tab__container {
-  &.active {
+  margin-left: -1.5%;
+  margin-right: -1.5%;
+  &:first-of-type {
+    margin-left: 0;
+  }
+  &:last-of-type {
+    margin-right: 0;
   }
 }
 
@@ -40,7 +56,7 @@
   cursor: pointer;
   margin-bottom: -10px;
   position: relative;
-  margin-left: -3%;
+  transition: margin-bottom 250ms ease-in-out;
 
   &--all {
     background-color: map-get($myWorksColor, all);
@@ -63,13 +79,6 @@
 
   &.active {
     z-index: 2;
-  }
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-  &:last-of-type {
-    margin-right: 0;
   }
 
 }
@@ -105,5 +114,16 @@
 
   &.active {
     display: grid;
+  }
+}
+
+@keyframes appear-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

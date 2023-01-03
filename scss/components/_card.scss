@@ -1,4 +1,6 @@
 .card__container {
+  @include animate-appear(600, 200);
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -8,11 +10,21 @@
   background: transparent;
 
   &:hover {
+    z-index: 10;
     .card {
       animation: flip-in 850ms linear both;
     }
     .card__shadow {
       animation: shadow-in 850ms ease-in-out both;
+    }
+  }
+
+  &.initial {
+    .card {
+      animation-duration: 0ms;
+    }
+    .card__shadow {
+      animation-duration: 0ms;
     }
   }
 }
@@ -24,7 +36,7 @@
   height: 100%;
   background: map-get($colors, text-light);
   position: relative;
-  color: #001059;
+  color: map-get($colors, text-dark);
   transform-style: preserve-3d;
   transform: perspective(1000px) translateZ(0) rotateY(0deg);
   animation: flip-out 600ms linear both;

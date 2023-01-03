@@ -129,7 +129,10 @@ function layout2() {
 }
 
 window.history.scrollRestoration = 'manual'
-window.onscroll = animateHeader
+window.onscroll = () => {
+    animateHeader()
+    startAppeareance()
+}
 window.onresize = initHeader
 
 const mainNode = document.getElementsByTagName('main')[0]
@@ -189,7 +192,6 @@ function animateHeader() {
         }
     }
     else {
-        console.log(headerHeight)
         if(step === 2 && ((headerHeight - headerContentHeight[step-1]) > 16)) {
             layout2()
             step = 1

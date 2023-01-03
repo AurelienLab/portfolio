@@ -2,18 +2,53 @@
   display: flex;
   scroll-padding-top: 90px;
 
+  &.animate {
+    .heading {
+      animation: appear-left 800ms ease-in-out both;
+    }
+    p {
+      animation: appear-right 800ms 300ms ease-in-out both;
+    }
+  }
+
   .heading {
     display: flex;
     width: 50%;
     align-items: center;
     justify-content: center;
     background-color: map-get($colors, tertiary);
-    color: map-get($colors, text-light)
+    color: map-get($colors, text-light);
+    opacity: 0;
+    transform: translateX(-50%);
   }
 
   p {
     width: 50%;
     color: map-get($colors, tertiary);
     padding: 60px;
+    opacity: 0;
+    transform: translateX(50%);
+  }
+}
+
+@keyframes appear-left {
+  from {
+    opacity: 0;
+    transform: translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes appear-right {
+  from {
+    opacity: 0;
+    transform: translateX(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
