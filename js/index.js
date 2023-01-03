@@ -1,4 +1,3 @@
-window.history.scrollRestoration = 'manual'
 document.addEventListener('DOMContentLoaded', () => {
     handleTabs()
     initMenu()
@@ -9,13 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(sites => {
             generateSitesList(sites)
-            setScroll()
+            initHeader()
         })
         .catch(error => console.log({error}))
 
-    window.onbeforeunload = function(e) {
-        localStorage.setItem('scrollpos', controller.scrollPos());
-    };
+    window.onbeforeunload = () => window.localStorage.setItem('scrollpos', window.scrollY)
 })
 
 function handleTabs() {
@@ -87,6 +84,7 @@ function generateSitesList(sites) {
         document.getElementById('myWork-all').appendChild(cardNode.cloneNode(true))
     }
 }
+
 const menuList = document.querySelectorAll('.header__menu__item')
 const boxes = []
 const mainTitle = document.querySelector('.header__title');
@@ -217,87 +215,73 @@ function layout2() {
     }
 }
 
-let scenes = []
-// init controller
-let controller = new ScrollMagic.Controller();
-function setScroll(refresh) {
-    if(refresh) {
-        controller = new ScrollMagic.Controller();
-    }
+window.history.scrollRestoration = 'manual'
+window.onscroll = animateHeader
+window.onresize = initHeader
+let initialHeaderHeight = -1;
 
-    let stick = new ScrollMagic.Scene({triggerElement: "#trigger", duration: "0"})
-        .setPin(".header")
-        .addIndicators()
-        .addTo(controller);
+function initHeader() {
+    initialHeaderHeight = window.innerHeight
+    document.getElementsByTagName('main')[0].style.marginTop = (initialHeaderHeight + window.scrollY*0.5) + "px"
 
-    scenes.push(stick)
-
-    let scene = new ScrollMagic.Scene({triggerElement: "#trigger", duration: "100%"})
-        .triggerHook(0)
-        .addIndicators()
-        .addTo(controller);
-
-    scenes.push(scene)
-
-    let scene2 = new ScrollMagic.Scene({triggerElement: "#trigger", duration: "0", offset: "200%"})
-        .addIndicators()
-        .addTo(controller);
-
-    scenes.push(scene2)
-
-    let scene3 = new ScrollMagic.Scene({triggerElement: "#trigger", duration: "0", offset: "600%"})
-        .addIndicators()
-        .addTo(controller);
-
-    scenes.push(scene3)
-
-    scene.on('progress', function(e) {
-        document.querySelector('.header').style.height = (1-e.progress) * 100 + "vh"
-    })
-
-    scene.on('enter', function(e) {
-        document.querySelector('.header').style.transition = "";
-    })
-
-    scene.on('leave', function(e) {
-        document.querySelector('.header').style.transition = "height 800ms ease-in-out";
-        document.querySelector('.header').style.height = (1-e.progress) * 100 + "vh"
-    })
-
-    scene2.on('enter', function(e) {
-        if(e.scrollDirection === "FORWARD") {
-            layout1()
-        }
-
-    })
-    scene2.on('leave', function(e) {
-        if(e.scrollDirection === "REVERSE") {
-            layout1()
-        }
-    })
-
-    scene3.on('enter', function(e) {
-        if(e.scrollDirection === "FORWARD") {
-            layout2()
-        }
-
-    })
-    scene3.on('leave', function(e) {
-        if(e.scrollDirection === "REVERSE") {
-            layout2()
-        }
-    })
-
-
-    if(!refresh) {
-        const sceneEnd = scene.offset() + scene.duration()
-        const scrollPos = window.localStorage.getItem('scrollpos')
-        if(scrollPos && (scrollPos > sceneEnd)) {
-            document.querySelector('.header').style.transition = "height 800ms ease-in-out";
-            document.querySelector('.header').style.height = "0";
-        }
-        controller.scrollTo(scrollPos)
+    let scrollPos = localStorage.getItem('scrollpos')
+    if(scrollPos) {
+        window.scrollTo(0, parseFloat(scrollPos))
     }
 }
 
+let step = 0;
+let headerContentHeight = [-1,-1,-1]
+let previousScroll = 0;
+function animateHeader() {
+    if(initialHeaderHeight === -1) {
+        initHeader()
+    }
 
+    const direction = window.scrollY > previousScroll ? "down" : "up";
+    previousScroll = window.scrollY
+
+    //Calcul de la taille du header
+    let calcul = (initialHeaderHeight - (window.scrollY * 0.5))
+    document.querySelector('.header').style.height = calcul +"px"
+    if(calcul > 90) {
+        document.getElementsByTagName('main')[0].style.marginTop = (initialHeaderHeight + window.scrollY*0.5) + "px"
+    }
+
+
+    //Gestion des etapes
+    let contentDistance = document.querySelector('.header__title').getBoundingClientRect().top
+    let titleHeight = document.querySelector('.header__title').clientHeight
+    let menuHeight = document.querySelector('.header__menu').clientHeight
+    let headerHeight = document.querySelector('.header').clientHeight
+
+    let contentHeight = step < 2 ? titleHeight + menuHeight : menuHeight
+
+    if(headerContentHeight[step] > contentHeight || headerContentHeight[step] === -1) {
+        headerContentHeight[step] = contentHeight
+    }
+
+
+    if(direction === "down") {
+        if(step === 1 && contentDistance<= 0) {
+            layout2()
+            step = 2
+        }
+        if(step === 0 && contentDistance<= 15) {
+            layout1()
+            step = 1
+        }
+    }
+    else {
+        console.log(headerHeight)
+        if(step === 2 && ((headerHeight - headerContentHeight[step-1]) > 16)) {
+            layout2()
+            step = 1
+        }
+        if(step === 1 && ((headerHeight - headerContentHeight[step-1]) > 30)) {
+            layout1()
+            step = 0
+        }
+    }
+
+}

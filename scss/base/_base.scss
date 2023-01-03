@@ -6,6 +6,11 @@ html {
   scroll-behavior: smooth;
 }
 
+main {
+  position: absolute;
+  //margin-top: 100vh;
+}
+
 .heading {
   font-family: $heading-font;
   font-size: $heading-font-size;
