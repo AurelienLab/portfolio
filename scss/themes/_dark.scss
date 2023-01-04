@@ -3,6 +3,9 @@
 
   .header {
     background-color: darkred;
+    &:before {
+      color: darken(darkred, 4%);
+    }
   }
 
   .header__menu__item {
