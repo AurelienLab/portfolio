@@ -194,7 +194,7 @@ function animateHeader() {
         }
     }
     else {
-        if(step === 2 && ((headerHeight - headerContentHeight[step-1]) > 16)) {
+        if(step === 2 && ((headerHeight - headerContentHeight[step-1]) > 40)) {
             layout2()
             step = 1
         }

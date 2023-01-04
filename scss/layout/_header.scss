@@ -10,6 +10,7 @@
   align-items: center;
   height: 100vh;
   background: map-get($colors, primary);
+  transition: background-color 250ms ease-in-out;
 
   &.step1 {
     & .header__menu {

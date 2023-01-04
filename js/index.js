@@ -1,4 +1,11 @@
+let darkmode = window.localStorage.getItem('darkmode') === "true"
 document.addEventListener('DOMContentLoaded', () => {
+    console.log(darkmode)
+    if(darkmode) {
+        document.getElementsByTagName('body')[0].classList.add('dark')
+        document.getElementById('darkmode').innerHTML = "<i class=\"fa-solid fa-sun\"></i>"
+    }
+
     handleTabs()
     initMenu()
 
@@ -102,3 +109,18 @@ function generateSitesList(sites) {
     }
     handleAppear()
 }
+
+document.getElementById('darkmode').addEventListener('click', (e) => {
+    e.preventDefault()
+    if(darkmode) {
+        document.getElementsByTagName('body')[0].classList.remove('dark')
+        e.currentTarget.innerHTML = "<i class=\"fa-solid fa-moon\"></i>"
+    }
+    else {
+        document.getElementsByTagName('body')[0].classList.add('dark')
+        e.currentTarget.innerHTML = "<i class=\"fa-solid fa-sun\"></i>"
+    }
+
+    darkmode = !darkmode
+    window.localStorage.setItem('darkmode', darkmode)
+})

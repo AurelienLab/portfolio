@@ -57,7 +57,7 @@
   cursor: pointer;
   margin-bottom: -10px;
   position: relative;
-  transition: margin-bottom 250ms ease-in-out;
+  transition: margin-bottom 250ms ease-in-out, background-color 250ms ease-in-out;
 
   &--all {
     background-color: map-get($myWorksColor, all);
@@ -98,7 +98,7 @@
   width: 100%;
   opacity: 0;
   padding: 50px;
-  transition: opacity 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out, background-color 250ms ease-in-out;
 
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 25px;

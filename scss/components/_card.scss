@@ -40,6 +40,7 @@
   transform-style: preserve-3d;
   transform: perspective(1000px) translateZ(0) rotateY(0deg);
   animation: flip-out 600ms linear both;
+  transition: background-color 250ms ease-in-out;
 }
 
 .card__shadow {
