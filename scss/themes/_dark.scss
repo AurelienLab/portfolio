@@ -28,6 +28,9 @@
     p {
       color: map-get($colors, text-light);
       background: #00066c;
+      &:before {
+        color: #101985;
+      }
     }
   }
 

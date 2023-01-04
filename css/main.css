@@ -475,22 +475,22 @@ main {
   text-align: center;
 }
 .header__menu__item:nth-of-type(0n) a:before {
-  clip-path: polygon(4% 4%, 95% 2%, 96% 97%, 7% 98%);
+  clip-path: polygon(1% 1%, 94% 3%, 96% 97%, 3% 97%);
 }
 .header__menu__item:nth-of-type(1n) a:before {
-  clip-path: polygon(1% 1%, 95% 4%, 94% 97%, 4% 97%);
+  clip-path: polygon(7% 1%, 99% 1%, 95% 96%, 6% 96%);
 }
 .header__menu__item:nth-of-type(2n) a:before {
-  clip-path: polygon(1% 1%, 97% 3%, 99% 99%, 2% 96%);
+  clip-path: polygon(5% 4%, 99% 2%, 94% 96%, 7% 99%);
 }
 .header__menu__item:nth-of-type(3n) a:before {
-  clip-path: polygon(4% 2%, 96% 4%, 97% 99%, 4% 96%);
+  clip-path: polygon(1% 1%, 94% 3%, 95% 99%, 7% 96%);
 }
 .header__menu__item:nth-of-type(4n) a:before {
-  clip-path: polygon(2% 1%, 98% 3%, 95% 98%, 1% 96%);
+  clip-path: polygon(4% 1%, 96% 3%, 94% 96%, 2% 97%);
 }
 .header__menu__item:nth-of-type(5n) a:before {
-  clip-path: polygon(2% 3%, 99% 2%, 97% 96%, 6% 97%);
+  clip-path: polygon(3% 4%, 93% 4%, 95% 99%, 7% 98%);
 }
 .header__menu__item a {
   position: relative;
@@ -596,7 +596,7 @@ main {
   width: fit-content;
   margin: auto;
   padding: 18px 35px;
-  clip-path: polygon(1% 4%, 99% 1%, 99% 99%, 4% 97%);
+  clip-path: polygon(7% 4%, 99% 2%, 95% 98%, 3% 98%);
   opacity: 0;
 }
 #my-work .heading.animate {
@@ -646,15 +646,15 @@ main {
 }
 .folder__tab--all {
   background-color: #00FFF0;
-  clip-path: polygon(6% 0, 99% 0, 97% 100%, 2% 100%);
+  clip-path: polygon(3% 0, 94% 0, 94% 100%, 3% 100%);
 }
 .folder__tab--courses {
   background-color: #FFC700;
-  clip-path: polygon(2% 0, 98% 0, 98% 100%, 5% 100%);
+  clip-path: polygon(3% 0, 98% 0, 95% 100%, 5% 100%);
 }
 .folder__tab--freelance {
   background-color: #FAFF00;
-  clip-path: polygon(6% 0, 96% 0, 96% 100%, 5% 100%);
+  clip-path: polygon(2% 0, 98% 0, 98% 100%, 3% 100%);
 }
 .folder__tab:hover, .folder__tab.active {
   margin-bottom: -1px;
@@ -735,21 +735,24 @@ main {
   color: #FFFDED;
   background: #00066c;
 }
+.dark #about-me p:before {
+  color: #101985;
+}
 .dark #my-work .folder__tab {
   color: white;
 }
 .dark #my-work .folder__tab--all {
   background-color: #0043a8;
-  clip-path: polygon(2% 0, 96% 0, 95% 100%, 1% 100%);
+  clip-path: polygon(5% 0, 95% 0, 94% 100%, 5% 100%);
 }
 .dark #my-work .folder__tab--courses {
   background-color: #863600;
-  clip-path: polygon(5% 0, 94% 0, 95% 100%, 1% 100%);
+  clip-path: polygon(4% 0, 95% 0, 95% 100%, 5% 100%);
 }
 .dark #my-work .folder__tab--freelance {
   color: #1f1f6d;
   background-color: #FFC100;
-  clip-path: polygon(4% 0, 98% 0, 96% 100%, 3% 100%);
+  clip-path: polygon(3% 0, 95% 0, 96% 100%, 6% 100%);
 }
 .dark #my-work .folder__tab-content--all {
   background-color: #0043a8;
