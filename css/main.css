@@ -248,7 +248,7 @@ main {
   gap: 5px;
 }
 .card__back .card__back__keywords li {
-  background-color: #FF0099;
+  background-color: #d90185;
 }
 .card__back .card__back__keywords li a {
   color: #FFFDED;
@@ -413,7 +413,7 @@ main {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: #FF0099;
+  background: #d90185;
 }
 .header.step1 .header__menu ul {
   flex-direction: row;
@@ -466,22 +466,22 @@ main {
   color: #758BFD;
 }
 .header__menu__item:nth-of-type(0n) {
-  clip-path: polygon(1% 1%, 96% 4%, 94% 99%, 1% 98%);
+  clip-path: polygon(3% 3%, 94% 4%, 96% 98%, 5% 99%);
 }
 .header__menu__item:nth-of-type(1n) {
-  clip-path: polygon(2% 1%, 94% 1%, 97% 98%, 2% 98%);
+  clip-path: polygon(6% 3%, 98% 1%, 95% 96%, 2% 96%);
 }
 .header__menu__item:nth-of-type(2n) {
-  clip-path: polygon(6% 4%, 98% 1%, 94% 98%, 4% 99%);
+  clip-path: polygon(4% 1%, 97% 3%, 98% 98%, 2% 97%);
 }
 .header__menu__item:nth-of-type(3n) {
-  clip-path: polygon(2% 2%, 97% 4%, 98% 98%, 4% 97%);
+  clip-path: polygon(5% 2%, 96% 2%, 99% 98%, 2% 96%);
 }
 .header__menu__item:nth-of-type(4n) {
-  clip-path: polygon(5% 2%, 98% 2%, 99% 98%, 4% 98%);
+  clip-path: polygon(6% 4%, 96% 1%, 96% 98%, 3% 96%);
 }
 .header__menu__item:nth-of-type(5n) {
-  clip-path: polygon(1% 2%, 95% 1%, 96% 98%, 2% 98%);
+  clip-path: polygon(1% 2%, 99% 4%, 97% 98%, 4% 97%);
 }
 
 #about-me {
@@ -499,14 +499,14 @@ main {
   width: 50%;
   align-items: center;
   justify-content: center;
-  background-color: #FFA800;
+  background-color: #0045E0;
   color: #FFFDED;
   opacity: 0;
   transform: translateX(-50%);
 }
 #about-me p {
   width: 50%;
-  color: #FFA800;
+  color: #0045E0;
   padding: 60px;
   opacity: 0;
   transform: translateX(50%);
@@ -544,7 +544,7 @@ main {
   width: fit-content;
   margin: auto;
   padding: 18px 35px;
-  clip-path: polygon(7% 1%, 95% 1%, 95% 97%, 7% 99%);
+  clip-path: polygon(3% 3%, 96% 2%, 96% 96%, 7% 96%);
   opacity: 0;
 }
 #my-work .heading.animate {
@@ -593,15 +593,15 @@ main {
 }
 .folder__tab--all {
   background-color: #00FFF0;
-  clip-path: polygon(4% 0, 97% 0, 96% 100%, 1% 100%);
+  clip-path: polygon(3% 0, 95% 0, 94% 100%, 5% 100%);
 }
 .folder__tab--courses {
   background-color: #FFC700;
-  clip-path: polygon(2% 0, 95% 0, 95% 100%, 1% 100%);
+  clip-path: polygon(2% 0, 99% 0, 97% 100%, 2% 100%);
 }
 .folder__tab--freelance {
   background-color: #FAFF00;
-  clip-path: polygon(6% 0, 99% 0, 99% 100%, 1% 100%);
+  clip-path: polygon(3% 0, 96% 0, 99% 100%, 4% 100%);
 }
 .folder__tab:hover, .folder__tab.active {
   margin-bottom: -1px;
