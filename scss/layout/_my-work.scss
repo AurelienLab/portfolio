@@ -22,6 +22,7 @@
   margin: 30px auto;
   margin-bottom: 50px;
   width: 90%;
+  max-width: 1400px;
   opacity: 0;
 
   &.animate {
@@ -89,9 +90,8 @@
 }
 
 .folder__tab-content {
-  z-index: -1;
-  display: grid;
-  position: absolute;
+  display: none;
+  position: relative;
   top: 0;
   height: fit-content;
   left: 0;
@@ -117,8 +117,9 @@
   }
 
   &.active {
-    z-index: 1;
+    display: grid;
     opacity: 1;
+    transform: scaleY(1);
   }
 }
 

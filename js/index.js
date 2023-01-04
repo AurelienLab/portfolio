@@ -9,15 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
     handleTabs()
     initMenu()
 
-    fetch('./js/works.json')
-        .then(response => {
-            if(response.ok) return response.json()
-        })
-        .then(sites => {
-            generateSitesList(sites)
-            initHeader()
-        })
-        .catch(error => console.log({error}))
+    generateSitesList(sites)
+    initHeader()
+    // fetch('./js/works.json')
+    //     .then(response => {
+    //         if(response.ok) return response.json()
+    //     })
+    //     .then(sites => {
+    //         generateSitesList(sites)
+    //         initHeader()
+    //     })
+    //     .catch(error => console.log({error}))
 
     window.onbeforeunload = () => window.localStorage.setItem('scrollpos', window.scrollY)
 })

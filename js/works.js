@@ -1,4 +1,4 @@
-[
+const sites = [
   {
     "name": "Test de site",
     "type": 1,
