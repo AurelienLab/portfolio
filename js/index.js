@@ -1,6 +1,5 @@
 let darkmode = window.localStorage.getItem('darkmode') === "true"
 document.addEventListener('DOMContentLoaded', () => {
-    console.log(darkmode)
     if(darkmode) {
         document.getElementsByTagName('body')[0].classList.add('dark')
         document.getElementById('darkmode').innerHTML = "<i class=\"fa-solid fa-sun\"></i>"
@@ -52,13 +51,15 @@ function handleTabs() {
     }
 }
 
+function removeInitialClass(e) {
+    e.currentTarget.classList.remove('initial')
+    e.currentTarget.removeEventListener('mouseenter', removeInitialClass, true)
+}
+
 function handleAppear() {
     const cards = document.getElementsByClassName('card__container')
     for(const card of cards) {
-        card.addEventListener('mouseenter', () => {
-            card.classList.remove('initial')
-            card.removeEventListener('mouseenter')
-        })
+        card.addEventListener('mouseenter', removeInitialClass)
     }
 }
 
