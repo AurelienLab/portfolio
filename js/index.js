@@ -1,4 +1,6 @@
 let darkmode = window.localStorage.getItem('darkmode') === "true"
+const workTypes = ['courses', 'freelance']
+
 document.addEventListener('DOMContentLoaded', () => {
     if(darkmode) {
         document.getElementsByTagName('body')[0].classList.add('dark')
@@ -20,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //     })
     //     .catch(error => console.log({error}))
 
-    window.onbeforeunload = () => window.localStorage.setItem('scrollpos', window.scrollY)
+    window.onbeforeunload = () => window.sessionStorage.setItem('scrollpos', window.scrollY)
 })
 
 function handleTabs() {
@@ -28,25 +30,19 @@ function handleTabs() {
 
     for(const tab of tabs) {
         tab.addEventListener('click', (e) => {
-            const target = e.currentTarget.dataset.target
-            const folderContent = document.querySelector(target)
-
+            const type = e.currentTarget.dataset.type ? parseInt(e.currentTarget.dataset.type) : null
             for(const tab of tabs) {
                 tab.classList.remove('active')
                 tab.parentNode.classList.remove('active')
-                document.querySelector(tab.dataset.target).classList.remove('active')
             }
-
-            const cards = folderContent.querySelectorAll('.card__container')
-            for(const card of cards) {
-                card.classList.add('initial')
-            }
-
+            generateSitesList(filtrerSites(sites, type))
             e.currentTarget.classList.add('active')
             e.currentTarget.parentNode.classList.add('active')
-            folderContent.classList.add('active')
+            const container = document.getElementById('myWork-container')
+            container.classList.remove(...workTypes)
+            container.classList.add(workTypes[type])
 
-            handleAppear()
+            handleSiteAppear()
         })
     }
 }
@@ -56,14 +52,21 @@ function removeInitialClass(e) {
     e.currentTarget.removeEventListener('mouseenter', removeInitialClass, true)
 }
 
-function handleAppear() {
+function handleSiteAppear() {
     const cards = document.getElementsByClassName('card__container')
     for(const card of cards) {
         card.addEventListener('mouseenter', removeInitialClass)
     }
 }
 
+const filtrerSites = (sites, type = null) => {
+    if(type === null || type === undefined) return sites
+    return sites.filter(site => site.type === type)
+}
+
 function generateSitesList(sites) {
+    const grid = document.getElementById('myWork-elements')
+    grid.innerHTML = ""
     for(const site of sites) {
         let keywordsHTML = ""
         for(const keyword of site.keywords) {
@@ -73,7 +76,7 @@ function generateSitesList(sites) {
                     <div class="card">
                         <div class="card__front">
                             <img src="${site.imageUrl}">
-                            <div class="front__title">
+                            <div class="front__title front__title--${workTypes[site.type]}">
                                 <div class="shape"></div>
                                 <h4>${site.name}</h4>
                             </div>
@@ -97,20 +100,27 @@ function generateSitesList(sites) {
         placeholder.innerHTML = html
         const cardNode = placeholder.firstChild
 
-        switch(site.type) {
-            case 1:
-                cardNode.querySelector('.front__title').classList.add('front__title--courses')
-                document.getElementById('myWork-courses').appendChild(cardNode.cloneNode(true))
-                break;
-            case 2:
-                cardNode.querySelector('.front__title').classList.add('front__title--freelance')
-                document.getElementById('myWork-freelance').appendChild(cardNode.cloneNode(true))
-                break;
-        }
+        // switch(site.type) {
+        //     case 1:
+        //         cardNode.querySelector('.front__title').classList.add('front__title--courses')
+        //         document.getElementById('myWork-courses').appendChild(cardNode.cloneNode(true))
+        //         break;
+        //     case 2:
+        //         cardNode.querySelector('.front__title').classList.add('front__title--freelance')
+        //         document.getElementById('myWork-freelance').appendChild(cardNode.cloneNode(true))
+        //         break;
+        // }
 
-        document.getElementById('myWork-all').appendChild(cardNode.cloneNode(true))
+        grid.appendChild(cardNode.cloneNode(true))
     }
-    handleAppear()
+
+    //Ajustement de la hauteur en fonction du contenu
+    const gridHeight = grid.clientHeight
+    const container = document.getElementById("myWork-container")
+    const containerPaddingTop = grid.offsetTop
+    container.style.height = gridHeight + (2*containerPaddingTop) + "px"
+
+    handleSiteAppear()
 }
 
 document.getElementById('darkmode').addEventListener('click', (e) => {

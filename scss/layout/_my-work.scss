@@ -90,37 +90,32 @@
 }
 
 .folder__tab-content {
-  display: none;
   position: relative;
   top: 0;
-  height: fit-content;
+  height: 0;
   left: 0;
   width: 100%;
-  opacity: 0;
   padding: 50px;
-  transition: opacity 250ms ease-in-out, background-color 250ms ease-in-out;
+  transition: opacity 250ms ease-in-out, background-color 250ms ease-in-out, height 800ms ease-in-out;
 
+  &.all {
+    background-color: map-get($myWorksColor, all);
+  }
+
+  &.courses {
+    background-color: map-get($myWorksColor, courses);
+  }
+
+  &.freelance {
+    background-color: map-get($myWorksColor, freelance);
+  }
+}
+
+#myWork-elements {
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 25px;
   grid-row-gap: 25px;
-
-  &--all {
-    background-color: map-get($myWorksColor, all);;
-  }
-
-  &--courses {
-    background-color: map-get($myWorksColor, courses);;
-  }
-
-  &--freelance {
-    background-color: map-get($myWorksColor, freelance);;
-  }
-
-  &.active {
-    display: grid;
-    opacity: 1;
-    transform: scaleY(1);
-  }
 }
 
 @keyframes appear-bottom {

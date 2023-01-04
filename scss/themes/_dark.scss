@@ -3,12 +3,34 @@
 
   .header {
     background-color: darkred;
+    &:before {
+      color: darken(darkred, 4%);
+    }
+  }
+
+  .header__menu__item {
+    a {
+      &:before {
+        background: lighten(darkred, 10%);
+      }
+    }
+
+    &:hover, &.active {
+      a {
+        &:before {
+          background: map-get($colors, text-light);
+        }
+      }
+    }
   }
 
   #about-me {
     p {
       color: map-get($colors, text-light);
       background: #00066c;
+      &:before {
+        color: #101985;
+      }
     }
   }
 
@@ -33,15 +55,15 @@
     }
 
     .folder__tab-content {
-      &--all {
+      &.all {
         background-color: map-get($myWorksDarkColor, all);
       }
 
-      &--courses {
+      &.courses {
         background-color: map-get($myWorksDarkColor, courses);
       }
 
-      &--freelance {
+      &.freelance {
         background-color: map-get($myWorksDarkColor, freelance);
       }
     }

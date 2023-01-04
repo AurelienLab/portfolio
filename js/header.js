@@ -146,7 +146,7 @@ function initHeader() {
     initialHeaderHeight = window.innerHeight
     mainNode.style.marginTop = (initialHeaderHeight + window.scrollY*0.7) + "px"
 
-    let scrollPos = localStorage.getItem('scrollpos')
+    let scrollPos = sessionStorage.getItem('scrollpos')
     if(scrollPos) {
         window.scrollTo(0, parseFloat(scrollPos))
     }
