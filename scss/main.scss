@@ -5,9 +5,12 @@
 @import "base/reset";
 @import "base/typography";
 @import "base/base";
+@import "base/animations";
 
 @import "components/card";
 
 @import "layout/header";
 @import "layout/about-me";
 @import "layout/my-work";
+
+@import "themes/dark";

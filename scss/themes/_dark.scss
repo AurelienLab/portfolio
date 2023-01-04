@@ -1,0 +1,64 @@
+.dark {
+  background-color: #424242;
+
+  .header {
+    background-color: darkred;
+  }
+
+  #about-me {
+    p {
+      color: map-get($colors, text-light);
+      background: #00066c;
+    }
+  }
+
+  #my-work {
+    .folder__tab {
+      color: map-get($colors, text-light);
+      &--all {
+        background-color: map-get($myWorksDarkColor, all);
+        clip-path: random-clip-path($x-max: 6, $y-max: 0);
+      }
+
+      &--courses {
+        background-color: map-get($myWorksDarkColor, courses);
+        clip-path: random-clip-path($x-max: 6, $y-max: 0);
+      }
+
+      &--freelance {
+        background-color: map-get($myWorksDarkColor, freelance);
+        clip-path: random-clip-path($x-max: 6, $y-max: 0);
+      }
+    }
+
+    .folder__tab-content {
+      &--all {
+        background-color: map-get($myWorksDarkColor, all);
+      }
+
+      &--courses {
+        background-color: map-get($myWorksDarkColor, courses);
+      }
+
+      &--freelance {
+        background-color: map-get($myWorksDarkColor, freelance);
+      }
+    }
+  }
+
+  .card {
+    background: #424242;
+  }
+  .card__shadow {
+    background: #000;
+  }
+  .card__back {
+    background: #424242;
+    color: map-get($colors, text-light);
+  }
+  .card__back__keywords {
+    li {
+      background-color: darkred;
+    }
+  }
+}

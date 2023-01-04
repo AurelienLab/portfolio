@@ -6,6 +6,11 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  overflow-x: hidden;
+  transition: background-color 250ms ease-in-out;
+}
+
 main {
   position: absolute;
   //margin-top: 100vh;

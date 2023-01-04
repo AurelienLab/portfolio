@@ -1,7 +1,7 @@
 $colors: (
-  primary: #FF0099,
+  primary: #d90185,
   secondary: #758BFD,
-  tertiary: #FFA800,
+  tertiary: #0045E0,
   text-light: #FFFDED,
   text-dark: #000680
 );
@@ -10,6 +10,12 @@ $myWorksColor : (
   all: #00FFF0,
   courses: #FFC700,
   freelance: #FAFF00
+);
+
+$myWorksDarkColor : (
+        all: #0043a8,
+        courses: #863600,
+        freelance: #938f00
 );
 
 $heading-font: "Passion One", cursive;
