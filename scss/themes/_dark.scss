@@ -55,15 +55,15 @@
     }
 
     .folder__tab-content {
-      &--all {
+      &.all {
         background-color: map-get($myWorksDarkColor, all);
       }
 
-      &--courses {
+      &.courses {
         background-color: map-get($myWorksDarkColor, courses);
       }
 
-      &--freelance {
+      &.freelance {
         background-color: map-get($myWorksDarkColor, freelance);
       }
     }
