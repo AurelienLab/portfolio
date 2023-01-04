@@ -449,42 +449,62 @@ main {
   display: flex;
   list-style-type: none;
   flex-direction: column;
+  align-items: center;
 }
 
 .header__menu__item {
+  position: relative;
+  display: block;
   font-family: "Passion One", cursive;
   text-align: center;
 }
+.header__menu__item:nth-of-type(0n) a:before {
+  clip-path: polygon(3% 2%, 95% 3%, 99% 97%, 2% 96%);
+}
+.header__menu__item:nth-of-type(1n) a:before {
+  clip-path: polygon(6% 4%, 98% 2%, 98% 99%, 5% 96%);
+}
+.header__menu__item:nth-of-type(2n) a:before {
+  clip-path: polygon(7% 4%, 98% 2%, 96% 97%, 4% 96%);
+}
+.header__menu__item:nth-of-type(3n) a:before {
+  clip-path: polygon(6% 3%, 99% 2%, 98% 98%, 6% 98%);
+}
+.header__menu__item:nth-of-type(4n) a:before {
+  clip-path: polygon(2% 4%, 93% 2%, 98% 97%, 5% 96%);
+}
+.header__menu__item:nth-of-type(5n) a:before {
+  clip-path: polygon(2% 3%, 97% 2%, 94% 99%, 5% 96%);
+}
 .header__menu__item a {
-  display: block;
+  position: relative;
+  display: inline-block;
   font-size: 2rem;
   color: #FFFDED;
   width: 100%;
   padding: 18px 35px;
+  transition: color 250ms ease-in-out;
 }
-.header__menu__item:hover {
-  background-color: #FFFDED;
+.header__menu__item a:before {
+  z-index: -1;
+  transform: scaleX(50%) scaleY(60%);
+  content: " ";
+  background: #fe0fa1;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  transition: transform 250ms ease-in-out, background 250ms ease-in-out;
 }
-.header__menu__item:hover a {
+.header__menu__item:hover a, .header__menu__item.active a {
   color: #758BFD;
 }
-.header__menu__item:nth-of-type(0n) {
-  clip-path: polygon(1% 4%, 96% 3%, 97% 98%, 3% 99%);
-}
-.header__menu__item:nth-of-type(1n) {
-  clip-path: polygon(2% 1%, 98% 1%, 98% 98%, 2% 99%);
-}
-.header__menu__item:nth-of-type(2n) {
-  clip-path: polygon(3% 3%, 96% 3%, 98% 98%, 3% 98%);
-}
-.header__menu__item:nth-of-type(3n) {
-  clip-path: polygon(2% 4%, 95% 1%, 95% 97%, 3% 97%);
-}
-.header__menu__item:nth-of-type(4n) {
-  clip-path: polygon(6% 1%, 94% 4%, 99% 99%, 5% 98%);
-}
-.header__menu__item:nth-of-type(5n) {
-  clip-path: polygon(5% 2%, 97% 4%, 94% 97%, 4% 99%);
+.header__menu__item:hover a:before, .header__menu__item.active a:before {
+  transform: scaleY(1) scaleX(1);
+  background: #FFFDED;
 }
 
 #about-me {
@@ -549,7 +569,7 @@ main {
   width: fit-content;
   margin: auto;
   padding: 18px 35px;
-  clip-path: polygon(4% 3%, 95% 1%, 99% 99%, 7% 97%);
+  clip-path: polygon(6% 4%, 93% 1%, 93% 96%, 4% 96%);
   opacity: 0;
 }
 #my-work .heading.animate {
@@ -599,15 +619,15 @@ main {
 }
 .folder__tab--all {
   background-color: #00FFF0;
-  clip-path: polygon(5% 0, 99% 0, 97% 100%, 5% 100%);
+  clip-path: polygon(5% 0, 95% 0, 96% 100%, 5% 100%);
 }
 .folder__tab--courses {
   background-color: #FFC700;
-  clip-path: polygon(6% 0, 99% 0, 95% 100%, 1% 100%);
+  clip-path: polygon(6% 0, 97% 0, 99% 100%, 4% 100%);
 }
 .folder__tab--freelance {
   background-color: #FAFF00;
-  clip-path: polygon(1% 0, 96% 0, 94% 100%, 2% 100%);
+  clip-path: polygon(6% 0, 98% 0, 95% 100%, 6% 100%);
 }
 .folder__tab:hover, .folder__tab.active {
   margin-bottom: -1px;
@@ -675,6 +695,12 @@ main {
 .dark .header {
   background-color: darkred;
 }
+.dark .header__menu__item a:before {
+  background: #be0000;
+}
+.dark .header__menu__item:hover a:before, .dark .header__menu__item.active a:before {
+  background: #FFFDED;
+}
 .dark #about-me p {
   color: #FFFDED;
   background: #00066c;
@@ -684,16 +710,16 @@ main {
 }
 .dark #my-work .folder__tab--all {
   background-color: #0043a8;
-  clip-path: polygon(6% 0, 94% 0, 95% 100%, 2% 100%);
+  clip-path: polygon(6% 0, 98% 0, 95% 100%, 3% 100%);
 }
 .dark #my-work .folder__tab--courses {
   background-color: #863600;
-  clip-path: polygon(2% 0, 94% 0, 99% 100%, 1% 100%);
+  clip-path: polygon(4% 0, 97% 0, 99% 100%, 5% 100%);
 }
 .dark #my-work .folder__tab--freelance {
   color: #1f1f6d;
   background-color: #FFC100;
-  clip-path: polygon(2% 0, 98% 0, 97% 100%, 6% 100%);
+  clip-path: polygon(2% 0, 99% 0, 98% 100%, 1% 100%);
 }
 .dark #my-work .folder__tab-content--all {
   background-color: #0043a8;

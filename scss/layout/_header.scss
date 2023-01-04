@@ -51,27 +51,57 @@
     display: flex;
     list-style-type: none;
     flex-direction: column;
+    align-items: center;
   }
 }
 
 .header__menu__item {
+  position: relative;
+  display: block;
   font-family: $heading-font;
   text-align: center;
+
+  @for $i from 0 through 5 {
+    &:nth-of-type(#{$i}n) a:before {
+      clip-path: random-clip-path();
+    }
+  }
+
   a {
-    display: block;
+    position: relative;
+    display: inline-block;
     font-size: $heading-font-size;
     color: map-get($colors, text-light);
     width: 100%;
     padding: 18px 35px;
-  }
+    transition: color 250ms ease-in-out;
 
-  &:hover {
-    background-color: map-get($colors, text-light);
 
-    a {
-      color: map-get($colors, secondary);
+    &:before {
+      z-index: -1;
+      transform: scaleX(50%) scaleY(60%);
+      content: ' ';
+      background: lighten(map-get($colors, primary), 10%);
+      display: block;
+      top:0;
+      bottom: 0;
+      left:0;
+      right: 0;
+      position: absolute;
+      margin: auto;
+      transition: transform 250ms ease-in-out, background 250ms ease-in-out;
     }
   }
 
-  @include clip-path-generation();
+
+
+  &:hover, &.active {
+    a {
+      color: map-get($colors, secondary);
+      &:before {
+        transform: scaleY(1) scaleX(1);
+        background: map-get($colors, text-light);
+      }
+    }
+  }
 }
