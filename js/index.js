@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //     })
     //     .catch(error => console.log({error}))
 
-    window.onbeforeunload = () => window.localStorage.setItem('scrollpos', window.scrollY)
+    window.onbeforeunload = () => window.sessionStorage.setItem('scrollpos', window.scrollY)
 })
 
 function handleTabs() {
