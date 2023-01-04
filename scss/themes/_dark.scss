@@ -14,7 +14,7 @@
 
   #my-work {
     .folder__tab {
-      color: map-get($colors, text-light);
+      color: white;
       &--all {
         background-color: map-get($myWorksDarkColor, all);
         clip-path: random-clip-path($x-max: 6, $y-max: 0);
@@ -26,6 +26,7 @@
       }
 
       &--freelance {
+        color: #1f1f6d;
         background-color: map-get($myWorksDarkColor, freelance);
         clip-path: random-clip-path($x-max: 6, $y-max: 0);
       }
