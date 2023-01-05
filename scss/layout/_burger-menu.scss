@@ -1,0 +1,25 @@
+.burger__container {
+  display: none;
+  @include tablet-only {
+    display: flex;
+  }
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  position: fixed;
+  top: 90px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: map-get($colors, primary);
+  transform: translateX(100%);
+  transition: background-color 250ms ease-in-out, transform 350ms ease-in-out, z-index 350ms 0ms;
+  & > .header__menu {
+    display: block;
+  }
+
+  &.active {
+    z-index: 1000;
+    transform: translateX(0);
+  }
+}

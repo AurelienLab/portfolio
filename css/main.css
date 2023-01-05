@@ -102,6 +102,8 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
+  max-width: 390px;
+  margin: auto;
   height: 250px;
   perspective: 800px;
   background: transparent;
@@ -521,22 +523,22 @@ body {
   text-align: center;
 }
 .header__menu__item:nth-of-type(0n) a:before {
-  clip-path: polygon(1% 2%, 93% 2%, 99% 96%, 7% 96%);
+  clip-path: polygon(7% 2%, 94% 2%, 95% 98%, 4% 98%);
 }
 .header__menu__item:nth-of-type(1n) a:before {
-  clip-path: polygon(6% 2%, 94% 3%, 95% 99%, 5% 96%);
+  clip-path: polygon(2% 3%, 97% 3%, 96% 99%, 7% 98%);
 }
 .header__menu__item:nth-of-type(2n) a:before {
-  clip-path: polygon(1% 2%, 94% 4%, 93% 96%, 1% 99%);
+  clip-path: polygon(5% 4%, 96% 3%, 96% 99%, 3% 98%);
 }
 .header__menu__item:nth-of-type(3n) a:before {
-  clip-path: polygon(7% 3%, 97% 2%, 99% 99%, 4% 97%);
+  clip-path: polygon(5% 1%, 94% 1%, 95% 99%, 3% 98%);
 }
 .header__menu__item:nth-of-type(4n) a:before {
-  clip-path: polygon(3% 2%, 98% 1%, 97% 97%, 5% 98%);
+  clip-path: polygon(3% 1%, 99% 4%, 97% 97%, 7% 98%);
 }
 .header__menu__item:nth-of-type(5n) a:before {
-  clip-path: polygon(2% 1%, 98% 3%, 99% 97%, 4% 98%);
+  clip-path: polygon(3% 2%, 96% 3%, 97% 97%, 2% 98%);
 }
 .header__menu__item a {
   position: relative;
@@ -659,7 +661,7 @@ body {
   width: fit-content;
   margin: auto;
   padding: 18px 35px;
-  clip-path: polygon(7% 1%, 93% 1%, 98% 99%, 4% 96%);
+  clip-path: polygon(4% 3%, 99% 3%, 98% 98%, 3% 98%);
   opacity: 0;
 }
 #my-work .heading.animate {
@@ -756,7 +758,7 @@ body {
 }
 .folder__tab--all:before {
   background-color: #00FFF0;
-  clip-path: polygon(6% 0, 99% 0, 99% 100%, 3% 100%);
+  clip-path: polygon(6% 0, 96% 0, 94% 100%, 3% 100%);
 }
 @media (max-width: 768px) {
   .folder__tab--courses:not(.active):before {
@@ -765,7 +767,7 @@ body {
 }
 .folder__tab--courses:before {
   background-color: #FFC700;
-  clip-path: polygon(5% 0, 95% 0, 98% 100%, 5% 100%);
+  clip-path: polygon(2% 0, 98% 0, 94% 100%, 4% 100%);
 }
 @media (max-width: 768px) {
   .folder__tab--freelance:not(.active):before {
@@ -774,7 +776,7 @@ body {
 }
 .folder__tab--freelance:before {
   background-color: #FAFF00;
-  clip-path: polygon(1% 0, 99% 0, 95% 100%, 6% 100%);
+  clip-path: polygon(4% 0, 99% 0, 99% 100%, 4% 100%);
 }
 .folder__tab:hover, .folder__tab.active {
   margin-bottom: -1px;
@@ -858,8 +860,38 @@ body {
     transform: translateY(0);
   }
 }
+.burger__container {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+  position: fixed;
+  top: 90px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #d90185;
+  transform: translateX(100%);
+  transition: background-color 250ms ease-in-out, transform 350ms ease-in-out, z-index 350ms 0ms;
+}
+@media (max-width: 1024px) {
+  .burger__container {
+    display: flex;
+  }
+}
+.burger__container > .header__menu {
+  display: block;
+}
+.burger__container.active {
+  z-index: 1000;
+  transform: translateX(0);
+}
+
 .dark {
-  background-color: #424242;
+  background-color: #313131;
+}
+.dark .burger__container {
+  background-color: darkred;
 }
 .dark .header {
   background-color: darkred;
@@ -890,7 +922,7 @@ body {
 }
 .dark #my-work .folder__tab--all:before {
   background-color: #0043a8;
-  clip-path: polygon(1% 0, 97% 0, 94% 100%, 2% 100%);
+  clip-path: polygon(5% 0, 98% 0, 96% 100%, 4% 100%);
 }
 @media (max-width: 768px) {
   .dark #my-work .folder__tab--courses:not(.active):before {
@@ -899,7 +931,7 @@ body {
 }
 .dark #my-work .folder__tab--courses:before {
   background-color: #863600;
-  clip-path: polygon(3% 0, 97% 0, 94% 100%, 5% 100%);
+  clip-path: polygon(4% 0, 95% 0, 95% 100%, 1% 100%);
 }
 .dark #my-work .folder__tab--freelance {
   color: #1f1f6d;
@@ -914,7 +946,7 @@ body {
 }
 .dark #my-work .folder__tab--freelance:before {
   background-color: #FFC100;
-  clip-path: polygon(4% 0, 94% 0, 99% 100%, 4% 100%);
+  clip-path: polygon(6% 0, 97% 0, 95% 100%, 4% 100%);
 }
 .dark #my-work .folder__tab-content.all {
   background-color: #0043a8;
@@ -926,13 +958,13 @@ body {
   background-color: #FFC100;
 }
 .dark .card {
-  background: #424242;
+  background: #575757;
 }
 .dark .card__shadow {
   background: #000;
 }
 .dark .card__back {
-  background: #424242;
+  background: #575757;
   color: #FFFDED;
 }
 .dark .card__back__keywords li {

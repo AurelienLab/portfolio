@@ -1,5 +1,9 @@
 .dark {
-  background-color: #424242;
+  background-color: #313131;
+
+  .burger__container {
+    background-color: darkred;
+  }
 
   .header {
     background-color: darkred;
@@ -94,13 +98,13 @@
   }
 
   .card {
-    background: #424242;
+    background: #575757;
   }
   .card__shadow {
     background: #000;
   }
   .card__back {
-    background: #424242;
+    background: #575757;
     color: map-get($colors, text-light);
   }
   .card__back__keywords {
