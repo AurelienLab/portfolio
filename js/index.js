@@ -9,32 +9,46 @@ document.addEventListener('DOMContentLoaded', () => {
             button.innerHTML = '<a href=""><i class="fa-solid fa-sun"></i></a>'
         }
     }
-
-    handleTabs()
     initMenu()
 
-    generateSitesList(sites)
+    getData()
+        .then(() => {
+            insertAboutMe(aboutMe)
+            generateSitesList(sites)
+            generateTabs(categories)
+        })
+        .catch(error => console.log(error))
+
     initHeader()
     startAppeareance()
-    // fetch('./js/works.json')
-    //     .then(response => {
-    //         if(response.ok) return response.json()
-    //     })
-    //     .then(sites => {
-    //         generateSitesList(sites)
-    //         initHeader()
-    //     })
-    //     .catch(error => console.log({error}))
 
     window.onbeforeunload = () => window.sessionStorage.setItem('scrollpos', window.scrollY)
 })
+function insertAboutMe(page) {
+    document.getElementById('about-me__title').innerText = page.title.rendered
+    document.getElementById('about-me__content').innerHTML = page.content.rendered
+}
+function generateTabs(categories) {
+    const container = document.querySelector('.folder__tab-list')
+    let i = 0;
+    for(const cat of categories) {
+        const active = i === 0 ? "active" : '';
+        const tabHtml = `<li class="folder__tab__container"><h3 class="folder__tab folder__tab--${cat.slug} ${active}" data-type=${cat.id} data-typeslug="${cat.slug}">${cat.name}</h3></li>`
+        const placeholder = document.createElement('div')
+        placeholder.innerHTML = tabHtml
+        container.appendChild(placeholder.firstChild)
+        i++;
+    }
+
+    handleTabs()
+}
 
 function handleTabs() {
     const tabs = document.querySelectorAll('.folder__tab')
 
     for(const tab of tabs) {
         tab.addEventListener('click', (e) => {
-            const type = e.currentTarget.dataset.type ? parseInt(e.currentTarget.dataset.type) : null
+            const type = parseInt(e.currentTarget.dataset.type)
             for(const tab of tabs) {
                 tab.classList.remove('active')
                 tab.parentNode.classList.remove('active')
@@ -43,8 +57,8 @@ function handleTabs() {
             e.currentTarget.classList.add('active')
             e.currentTarget.parentNode.classList.add('active')
             const container = document.getElementById('myWork-container')
-            container.classList.remove(...workTypes)
-            container.classList.add(workTypes[type])
+            container.classList.remove(...categoriesSlug)
+            container.classList.add(e.currentTarget.dataset.typeslug)
 
             handleSiteAppear()
         })
@@ -64,8 +78,7 @@ function handleSiteAppear() {
 }
 
 const filtrerSites = (sites, type = null) => {
-    if(type === null || type === undefined) return sites
-    return sites.filter(site => site.type === type)
+    return sites.filter(site => site.categories.includes(type))
 }
 
 function generateSitesList(sites) {
@@ -73,23 +86,23 @@ function generateSitesList(sites) {
     grid.innerHTML = ""
     for(const site of sites) {
         let keywordsHTML = ""
-        for(const keyword of site.keywords) {
+        for(const keyword of site.tagList) {
             keywordsHTML += `<li><a href="#">${keyword}</a></li>`
         }
         const html = `<div class="card__container initial">
                     <div class="card">
                         <div class="card__front">
-                            <img src="${site.imageUrl}">
-                            <div class="front__title front__title--${workTypes[site.type]}">
+                            <img src="${site.imageUrl}" alt="${site.altText}">
+                            <div class="front__title front__title--${categories.find(cat => site.categories.includes(cat.id) && cat.slug !== "all").slug}">
                                 <div class="shape"></div>
-                                <h4>${site.name}</h4>
+                                <h4>${site.title.rendered}</h4>
                             </div>
                         </div>
                         <div class="card__back">
-                            <h4>${site.name}</h4>
-                            <p>${site.description}</p>
+                            <h4>${site.title.rendered}</h4>
+                            ${site.content.rendered}
                             <div class="card__back__icons">
-                                <a href="#"><i class="fa-solid fa-link"></i></a>
+                                <a href="${site.url}"><i class="fa-solid fa-link"></i></a>
                                 <a href="#"><i class="fa-solid fa-calendar-days"></i></a>
                             </div>
                             <ul class="card__back__keywords">
@@ -103,17 +116,6 @@ function generateSitesList(sites) {
         const placeholder = document.createElement('div')
         placeholder.innerHTML = html
         const cardNode = placeholder.firstChild
-
-        // switch(site.type) {
-        //     case 1:
-        //         cardNode.querySelector('.front__title').classList.add('front__title--courses')
-        //         document.getElementById('myWork-courses').appendChild(cardNode.cloneNode(true))
-        //         break;
-        //     case 2:
-        //         cardNode.querySelector('.front__title').classList.add('front__title--freelance')
-        //         document.getElementById('myWork-freelance').appendChild(cardNode.cloneNode(true))
-        //         break;
-        // }
 
         grid.appendChild(cardNode.cloneNode(true))
     }
