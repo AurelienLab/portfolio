@@ -15,3 +15,15 @@
     }
   }
 }
+
+@mixin tablet-only {
+  @media (max-width: map-get($breakpoints, tablet)) {
+    @content;
+  }
+}
+
+@mixin mobile-only {
+  @media (max-width: map-get($breakpoints, mobile)) {
+    @content;
+  }
+}

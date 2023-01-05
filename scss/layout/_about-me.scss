@@ -1,4 +1,7 @@
 #about-me {
+  @include mobile-only{
+    flex-direction: column;
+  }
   display: flex;
   scroll-margin-top: 90px;
 
@@ -13,6 +16,10 @@
   }
 
   .heading {
+    @include mobile-only{
+      width: 100%;
+      padding: 45px;
+    }
     display: flex;
     width: 50%;
     align-items: center;
@@ -24,6 +31,9 @@
   }
 
   p {
+    @include mobile-only{
+      width: 100%;
+    }
     width: 50%;
     color: map-get($colors, tertiary);
     padding: 60px;

@@ -2,6 +2,7 @@
   margin-top: 60px;
   margin-bottom: 4rem;
   scroll-margin-top: 90px;
+  width: 100%;
   .heading {
     color: map-get($colors, text-light);
     text-align: center;
@@ -19,6 +20,9 @@
 }
 
 .folder {
+  @include tablet-only {
+    width: 100%;
+  }
   margin: 30px auto;
   margin-bottom: 50px;
   width: 90%;
@@ -31,6 +35,12 @@
 }
 
 .folder__tab-list {
+  @include mobile-only {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 15px;
+  }
   position: relative;
   width: 100%;
   display: flex;
@@ -40,6 +50,9 @@
 }
 
 .folder__tab__container {
+  @include mobile-only {
+    margin: 0;
+  }
   margin-left: -1.5%;
   margin-right: -1.5%;
   &:first-of-type {
@@ -47,6 +60,18 @@
   }
   &:last-of-type {
     margin-right: 0;
+  }
+}
+
+@include mobile-only {
+  h3.folder__tab {
+    margin: 0;
+    padding: 7px 32px 9px;
+    margin-bottom: 15px;
+
+    &:before {
+      transform: scaleX(50%) scaleY(80%);
+    }
   }
 }
 
@@ -60,22 +85,65 @@
   position: relative;
   transition: margin-bottom 250ms ease-in-out, background-color 250ms ease-in-out;
 
+  &:before {
+    z-index: -1;
+    transform: scaleX(1) scaleY(1);
+    content: ' ';
+    background: lighten(map-get($colors, primary), 10%);
+    display: block;
+    top:0;
+    bottom: 0;
+    left:0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+    transition: transform 250ms ease-in-out, background 250ms ease-in-out;
+  }
+
   &--all {
-    background-color: map-get($myWorksColor, all);
-    clip-path: random-clip-path($x-max: 6, $y-max: 0);
+    @include mobile-only {
+      &:not(.active):before {
+        background-color: transparentize(map-get($myWorksColor, all), 0.8);
+      }
+    }
+    &:before {
+      background-color: map-get($myWorksColor, all);
+      clip-path: random-clip-path($x-max: 6, $y-max: 0);
+    }
   }
 
   &--courses {
-    background-color: map-get($myWorksColor, courses);
-    clip-path: random-clip-path($x-max: 6, $y-max: 0);
+    @include mobile-only {
+      &:not(.active):before {
+        background-color: transparentize(map-get($myWorksColor, courses), 0.8);
+      }
+    }
+    &:before {
+      background-color: map-get($myWorksColor, courses);
+      clip-path: random-clip-path($x-max: 6, $y-max: 0);
+    }
   }
 
   &--freelance {
-    background-color: map-get($myWorksColor, freelance);
-    clip-path: random-clip-path($x-max: 6, $y-max: 0);
+    @include mobile-only {
+      &:not(.active):before {
+        background-color: transparentize(map-get($myWorksColor, freelance), 0.8);
+      }
+    }
+    &:before {
+      background-color: map-get($myWorksColor, freelance);
+      clip-path: random-clip-path($x-max: 6, $y-max: 0);
+    }
   }
 
   &:hover, &.active {
+    @include mobile-only {
+      margin-bottom: 15px;
+
+      &:before {
+        transform: scale(1);
+      }
+    }
     margin-bottom: -1px;
   }
 
@@ -90,6 +158,10 @@
 }
 
 .folder__tab-content {
+  @include mobile-only {
+    padding: 10px;
+    background: transparent!important;
+  }
   position: relative;
   top: 0;
   height: 0;
@@ -112,6 +184,14 @@
 }
 
 #myWork-elements {
+  @include tablet-only {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mobile-only {
+    grid-template-columns: repeat(1, 1fr);
+    grid-row-gap: 15px;
+
+  }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 25px;

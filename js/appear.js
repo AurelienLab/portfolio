@@ -17,10 +17,16 @@ function inView(element) {
 
 // animate element when it is in view
 function startAppeareance() {
+
     for(const el of elementsToAppear) {
-        if(inView(el)) {
-            el.classList.add('animate')
-            el.classList.remove('preload')
+        if(animate) {
+            if(inView(el)) {
+                el.classList.add('animate')
+            }
         }
+        else {
+            el.classList.add('animate')
+        }
+
     }
 }

@@ -1,0 +1,6 @@
+#burger-button {
+  display: none;
+  @include tablet-only {
+    display: block;
+  }
+}

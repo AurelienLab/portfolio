@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     generateSitesList(sites)
     initHeader()
+    startAppeareance()
     // fetch('./js/works.json')
     //     .then(response => {
     //         if(response.ok) return response.json()

@@ -141,8 +141,16 @@ let initialHeaderHeight = -1;
 let step = 0;
 let headerContentHeight = [-1,-1,-1]
 let previousScroll = 0;
+let animate = false;
 
 function initHeader() {
+    if(document.getElementsByTagName('html')[0].offsetWidth > 1024) {
+        animate = true
+    }
+    else {
+        animate = false
+        return
+    }
     initialHeaderHeight = window.innerHeight
     mainNode.style.marginTop = (initialHeaderHeight + window.scrollY*0.7) + "px"
 
@@ -153,6 +161,9 @@ function initHeader() {
 }
 
 function animateHeader() {
+    if(!animate) {
+        return;
+    }
     if(initialHeaderHeight === -1) {
         initHeader()
     }

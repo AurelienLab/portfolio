@@ -7,16 +7,18 @@ html {
 }
 
 body {
+  width:100%;
   overflow-x: hidden;
   transition: background-color 250ms ease-in-out;
-}
-
-main {
-  position: absolute;
-  //margin-top: 100vh;
 }
 
 .heading {
   font-family: $heading-font;
   font-size: $heading-font-size;
+}
+
+main {
+  @include tablet-only {
+    margin-top: 90px;
+  }
 }

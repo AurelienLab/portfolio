@@ -1,4 +1,9 @@
 .header {
+  @include tablet-only {
+    height: 90px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
   z-index: 100;
   position: fixed;
   top: 0;
@@ -14,6 +19,9 @@
   overflow: hidden;
 
   &:before {
+    @include tablet-only {
+      display: none;
+    }
     font-family: monospace;
     color: darken(map-get($colors, primary), 8%);
     position: absolute;
@@ -53,7 +61,20 @@
   }
 }
 
+#burger-button {
+  display: none;
+  @include tablet-only {
+    display: block;
+  }
+}
+
 .header__title {
+  @include tablet-only {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    margin-left: 18px;
+    letter-spacing: 0;
+  }
   transition: font-size 150ms ease-in-out;
   font-family: $heading-font;
   color: map-get($colors, text-light);
@@ -64,6 +85,9 @@
 }
 
 .header__menu {
+  @include tablet-only{
+    display: none;
+  }
   ul {
     display: flex;
     list-style-type: none;
