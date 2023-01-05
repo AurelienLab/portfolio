@@ -133,7 +133,10 @@ window.onscroll = () => {
     animateHeader()
     startAppeareance()
 }
-window.onresize = initHeader
+window.onresize = () => {
+    adjustSitesContainer()
+    initHeader()
+}
 
 const mainNode = document.getElementsByTagName('main')[0]
 const headerNode = document.querySelector('.header')
@@ -141,18 +144,32 @@ let initialHeaderHeight = -1;
 let step = 0;
 let headerContentHeight = [-1,-1,-1]
 let previousScroll = 0;
+let animate = false;
 
 function initHeader() {
+    if(document.getElementsByTagName('html')[0].offsetWidth > 1024) {
+        animate = true
+    }
+    else {
+        animate = false
+        mainNode.style.marginTop = "90px"
+        headerNode.style.height = "90px"
+        return
+    }
     initialHeaderHeight = window.innerHeight
     mainNode.style.marginTop = (initialHeaderHeight + window.scrollY*0.7) + "px"
-
+    animateHeader()
     let scrollPos = sessionStorage.getItem('scrollpos')
     if(scrollPos) {
         window.scrollTo(0, parseFloat(scrollPos))
     }
+
 }
 
 function animateHeader() {
+    if(!animate) {
+        return;
+    }
     if(initialHeaderHeight === -1) {
         initHeader()
     }

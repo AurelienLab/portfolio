@@ -1,10 +1,13 @@
 let darkmode = window.localStorage.getItem('darkmode') === "true"
+const darkmodeButtons = document.getElementsByClassName('darkmode-toggle')
 const workTypes = ['courses', 'freelance']
 
 document.addEventListener('DOMContentLoaded', () => {
     if(darkmode) {
         document.getElementsByTagName('body')[0].classList.add('dark')
-        document.getElementById('darkmode').innerHTML = "<i class=\"fa-solid fa-sun\"></i>"
+        for(const button of darkmodeButtons) {
+            button.innerHTML = '<a href=""><i class="fa-solid fa-sun"></i></a>'
+        }
     }
 
     handleTabs()
@@ -12,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     generateSitesList(sites)
     initHeader()
+    startAppeareance()
     // fetch('./js/works.json')
     //     .then(response => {
     //         if(response.ok) return response.json()
@@ -114,26 +118,54 @@ function generateSitesList(sites) {
         grid.appendChild(cardNode.cloneNode(true))
     }
 
+    adjustSitesContainer()
+
+    handleSiteAppear()
+}
+
+const adjustSitesContainer = () => {
+    const grid = document.getElementById('myWork-elements')
+
     //Ajustement de la hauteur en fonction du contenu
     const gridHeight = grid.clientHeight
     const container = document.getElementById("myWork-container")
     const containerPaddingTop = grid.offsetTop
     container.style.height = gridHeight + (2*containerPaddingTop) + "px"
-
-    handleSiteAppear()
 }
 
-document.getElementById('darkmode').addEventListener('click', (e) => {
+const toggleDarkMode = (e) => {
     e.preventDefault()
+    let buttonIconHTML;
     if(darkmode) {
         document.getElementsByTagName('body')[0].classList.remove('dark')
-        e.currentTarget.innerHTML = "<i class=\"fa-solid fa-moon\"></i>"
+        buttonIconHTML = '<a href="#"><i class="fa-solid fa-moon"></i></a>'
     }
     else {
         document.getElementsByTagName('body')[0].classList.add('dark')
-        e.currentTarget.innerHTML = "<i class=\"fa-solid fa-sun\"></i>"
+        buttonIconHTML = '<a href="#"><i class="fa-solid fa-sun"></i></a>'
     }
 
     darkmode = !darkmode
+    for(const button of darkmodeButtons) {
+        button.innerHTML = buttonIconHTML
+    }
     window.localStorage.setItem('darkmode', darkmode)
-})
+}
+
+const toggleBurger = (e) => {
+    e.preventDefault()
+    document.querySelector('.burger__container').classList.toggle('active')
+}
+for(const button of darkmodeButtons) {
+    button.addEventListener('click', toggleDarkMode)
+}
+
+document.getElementById('burger-button').addEventListener('click', toggleBurger)
+const burgerMenuItems = document.querySelectorAll('.burger__container .header__menu__item:not(.darkmode-toggle)')
+for(const burgerMenuItem of burgerMenuItems) {
+    burgerMenuItem.addEventListener('click', (e) => {
+        document.querySelector('.burger__container').classList.remove('active')
+    })
+}
+
+

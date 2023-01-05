@@ -1,5 +1,9 @@
 .dark {
-  background-color: #424242;
+  background-color: #313131;
+
+  .burger__container {
+    background-color: darkred;
+  }
 
   .header {
     background-color: darkred;
@@ -38,19 +42,43 @@
     .folder__tab {
       color: white;
       &--all {
-        background-color: map-get($myWorksDarkColor, all);
-        clip-path: random-clip-path($x-max: 6, $y-max: 0);
+        @include mobile-only {
+          &:not(.active):before {
+            background-color: transparentize(map-get($myWorksDarkColor, all), 0.8);
+          }
+        }
+        &:before {
+          background-color: map-get($myWorksDarkColor, all);
+          clip-path: random-clip-path($x-max: 6, $y-max: 0);
+        }
       }
 
       &--courses {
-        background-color: map-get($myWorksDarkColor, courses);
-        clip-path: random-clip-path($x-max: 6, $y-max: 0);
+        @include mobile-only {
+          &:not(.active):before {
+            background-color: transparentize(map-get($myWorksDarkColor, courses), 0.8);
+          }
+        }
+        &:before {
+          background-color: map-get($myWorksDarkColor, courses);
+          clip-path: random-clip-path($x-max: 6, $y-max: 0);
+        }
       }
 
       &--freelance {
         color: #1f1f6d;
-        background-color: map-get($myWorksDarkColor, freelance);
-        clip-path: random-clip-path($x-max: 6, $y-max: 0);
+        @include mobile-only {
+          &:not(.active) {
+            color: white;
+            &:before {
+              background-color: transparentize(map-get($myWorksDarkColor, freelance), 0.8);
+            }
+          }
+        }
+        &:before {
+          background-color: map-get($myWorksDarkColor, freelance);
+          clip-path: random-clip-path($x-max: 6, $y-max: 0);
+        }
       }
     }
 
@@ -70,13 +98,13 @@
   }
 
   .card {
-    background: #424242;
+    background: #575757;
   }
   .card__shadow {
     background: #000;
   }
   .card__back {
-    background: #424242;
+    background: #575757;
     color: map-get($colors, text-light);
   }
   .card__back__keywords {
