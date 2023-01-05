@@ -29,7 +29,7 @@
   }
 
   #about-me {
-    p {
+    #about-me__content {
       color: map-get($colors, text-light);
       background: #00066c;
       &:before {
