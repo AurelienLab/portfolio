@@ -9,7 +9,7 @@
     .heading {
       animation: appear-left 800ms ease-in-out both;
     }
-    p {
+    div {
       animation: appear-right 800ms 300ms ease-in-out both;
       transition: background-color 250ms ease-in-out;
     }
@@ -30,7 +30,7 @@
     transform: translateX(-50%);
   }
 
-  p {
+  #about-me__content {
     @include mobile-only{
       width: 100%;
     }
