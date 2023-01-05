@@ -54,6 +54,10 @@ a {
   font-size: 23px;
 }
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 :root {
   font-family: "Baloo 2", cursive;
 }
@@ -523,22 +527,22 @@ body {
   text-align: center;
 }
 .header__menu__item:nth-of-type(0n) a:before {
-  clip-path: polygon(7% 2%, 94% 2%, 95% 98%, 4% 98%);
+  clip-path: polygon(1% 2%, 94% 2%, 99% 98%, 3% 96%);
 }
 .header__menu__item:nth-of-type(1n) a:before {
-  clip-path: polygon(2% 3%, 97% 3%, 96% 99%, 7% 98%);
+  clip-path: polygon(4% 4%, 98% 4%, 95% 98%, 1% 99%);
 }
 .header__menu__item:nth-of-type(2n) a:before {
-  clip-path: polygon(5% 4%, 96% 3%, 96% 99%, 3% 98%);
+  clip-path: polygon(3% 3%, 93% 1%, 99% 97%, 1% 99%);
 }
 .header__menu__item:nth-of-type(3n) a:before {
-  clip-path: polygon(5% 1%, 94% 1%, 95% 99%, 3% 98%);
+  clip-path: polygon(6% 2%, 95% 2%, 97% 98%, 4% 99%);
 }
 .header__menu__item:nth-of-type(4n) a:before {
-  clip-path: polygon(3% 1%, 99% 4%, 97% 97%, 7% 98%);
+  clip-path: polygon(6% 1%, 94% 4%, 94% 96%, 4% 99%);
 }
 .header__menu__item:nth-of-type(5n) a:before {
-  clip-path: polygon(3% 2%, 96% 3%, 97% 97%, 2% 98%);
+  clip-path: polygon(5% 2%, 99% 1%, 98% 98%, 5% 99%);
 }
 .header__menu__item a {
   position: relative;
@@ -661,7 +665,7 @@ body {
   width: fit-content;
   margin: auto;
   padding: 18px 35px;
-  clip-path: polygon(4% 3%, 99% 3%, 98% 98%, 3% 98%);
+  clip-path: polygon(5% 1%, 98% 2%, 99% 98%, 5% 97%);
   opacity: 0;
 }
 #my-work .heading.animate {
@@ -758,7 +762,7 @@ body {
 }
 .folder__tab--all:before {
   background-color: #00FFF0;
-  clip-path: polygon(6% 0, 96% 0, 94% 100%, 3% 100%);
+  clip-path: polygon(1% 0, 96% 0, 94% 100%, 4% 100%);
 }
 @media (max-width: 768px) {
   .folder__tab--courses:not(.active):before {
@@ -767,7 +771,7 @@ body {
 }
 .folder__tab--courses:before {
   background-color: #FFC700;
-  clip-path: polygon(2% 0, 98% 0, 94% 100%, 4% 100%);
+  clip-path: polygon(3% 0, 94% 0, 95% 100%, 5% 100%);
 }
 @media (max-width: 768px) {
   .folder__tab--freelance:not(.active):before {
@@ -776,7 +780,7 @@ body {
 }
 .folder__tab--freelance:before {
   background-color: #FAFF00;
-  clip-path: polygon(4% 0, 99% 0, 99% 100%, 4% 100%);
+  clip-path: polygon(2% 0, 99% 0, 94% 100%, 2% 100%);
 }
 .folder__tab:hover, .folder__tab.active {
   margin-bottom: -1px;
@@ -922,7 +926,7 @@ body {
 }
 .dark #my-work .folder__tab--all:before {
   background-color: #0043a8;
-  clip-path: polygon(5% 0, 98% 0, 96% 100%, 4% 100%);
+  clip-path: polygon(1% 0, 97% 0, 97% 100%, 4% 100%);
 }
 @media (max-width: 768px) {
   .dark #my-work .folder__tab--courses:not(.active):before {
@@ -931,7 +935,7 @@ body {
 }
 .dark #my-work .folder__tab--courses:before {
   background-color: #863600;
-  clip-path: polygon(4% 0, 95% 0, 95% 100%, 1% 100%);
+  clip-path: polygon(4% 0, 99% 0, 98% 100%, 5% 100%);
 }
 .dark #my-work .folder__tab--freelance {
   color: #1f1f6d;
@@ -946,7 +950,7 @@ body {
 }
 .dark #my-work .folder__tab--freelance:before {
   background-color: #FFC100;
-  clip-path: polygon(6% 0, 97% 0, 95% 100%, 4% 100%);
+  clip-path: polygon(3% 0, 96% 0, 97% 100%, 4% 100%);
 }
 .dark #my-work .folder__tab-content.all {
   background-color: #0043a8;
