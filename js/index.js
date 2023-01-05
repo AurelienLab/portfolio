@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     getData()
         .then(() => {
             insertAboutMe(aboutMe)
-            generateSitesList(sites)
+            generateSitesList(filtrerSites(sites, categories.find(cat => cat.slug === "all").id))
             generateTabs(categories)
+            initPopovers()
         })
         .catch(error => console.log(error))
 
@@ -87,7 +88,7 @@ function generateSitesList(sites) {
     for(const site of sites) {
         let keywordsHTML = ""
         for(const keyword of site.tagList) {
-            keywordsHTML += `<li><a href="#">${keyword}</a></li>`
+            keywordsHTML += `<li>${keyword}</li>`
         }
         const html = `<div class="card__container initial">
                     <div class="card">
@@ -102,8 +103,8 @@ function generateSitesList(sites) {
                             <h4>${site.title.rendered}</h4>
                             ${site.content.rendered}
                             <div class="card__back__icons">
-                                <a href="${site.url}"><i class="fa-solid fa-link"></i></a>
-                                <a href="#"><i class="fa-solid fa-calendar-days"></i></a>
+                                <a href="${site.url}" class="popover" data-popovercontent="${site.url.replace(/^https?:\/\//, '')}" target="_blank"><i class="fa-solid fa-link"></i></a>
+                                <a href="#" class="popover" data-popovercontent="${site.custom_date}"><i class="fa-solid fa-calendar-days"></i></a>
                             </div>
                             <ul class="card__back__keywords">
                                 ${keywordsHTML}

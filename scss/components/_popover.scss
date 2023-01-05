@@ -1,0 +1,25 @@
+.popover {
+  position: relative;
+  &:hover {
+    .popover__content {
+      transform: translate(-50%, -105%) scale(1);
+    }
+  }
+  .popover__content {
+    text-align: center;
+    font-family: $paragraph-font;
+    font-size: 0.8rem;
+    color: white;
+    background: map-get($colors, text-dark);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    min-width: 150px;
+    margin: auto;
+    transform-origin: center bottom;
+    transform: translate(-50%, -105%) scale(0);
+    clip-path: polygon(2% 8%, 100% 10%, 99% 88%, 69% 89%, 50% 100%, 33% 90%, 0 89%);
+    padding: 25px;
+    transition: transform 200ms ease-in-out;
+  }
+}

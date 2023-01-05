@@ -1,4 +1,4 @@
-const baseUrl = "http://portfolio/wp-json/wp/v2"
+const baseUrl = "https://api.portfolio.vmedias.fr/wp-json"
 let categories, categoriesSlug = [];
 let sites;
 let aboutMe;
@@ -10,7 +10,7 @@ async function getData() {
 }
 
 async function getSites() {
-    return fetch(baseUrl + "/posts")
+    return fetch(baseUrl + "/wp/v2/posts")
         .then(res => {
             if(res.ok) {
                 return res.json()
@@ -20,7 +20,7 @@ async function getSites() {
             let promises = []
             for(let site of sites) {
 
-                promises.push(fetch(baseUrl + '/media/' + site.featured_media)
+                promises.push(fetch(baseUrl + '/wp/v2/media/' + site.featured_media)
                     .then(res => {
                         if (res.ok) return res.json()
                     })
@@ -32,7 +32,7 @@ async function getSites() {
 
                 site.tagList = []
                 for(const tag of site.tags) {
-                    promises.push(fetch(baseUrl + '/tags/' + tag)
+                    promises.push(fetch(baseUrl + '/wp/v2/tags/' + tag)
                         .then(res => {
                             if (res.ok) return res.json()
                         })
@@ -51,7 +51,7 @@ async function getSites() {
 
 
 async function getCategories() {
-    return fetch(baseUrl + "/categories")
+    return fetch(baseUrl + "/wp/v2/categories")
         .then(res => {
             if(res.ok) {
                 return res.json()
@@ -67,7 +67,7 @@ async function getCategories() {
 }
 
 async function getAboutMe() {
-    return fetch(baseUrl + '/pages?slug=about-me')
+    return fetch(baseUrl + '/wp/v2/pages?slug=about-me')
         .then(res => {
             if(res.ok) return res.json()
         })
