@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if(darkmode) {
         document.getElementsByTagName('body')[0].classList.add('dark')
         for(const button of darkmodeButtons) {
-            button.innerHTML = '<a href=""><i class="fa-solid fa-sun"></i></a>'
+            button.innerHTML = '<a href="" aria-label="Activer le thème clair"><i class="fa-solid fa-sun"></i></a>'
         }
     }
     initMenu()
@@ -90,7 +90,7 @@ function generateSitesList(sites) {
         for(const keyword of site.tagList) {
             keywordsHTML += `<li>${keyword}</li>`
         }
-        const html = `<div class="card__container initial">
+        let html = `<div class="card__container initial">
                     <div class="card">
                         <div class="card__front">
                             <img src="${site.imageUrl}" alt="${site.altText}">
@@ -103,9 +103,16 @@ function generateSitesList(sites) {
                             <h4>${site.title.rendered}</h4>
                             ${site.content.rendered}
                             <div class="card__back__icons">
-                                <a href="${site.url}" class="popover" data-popovercontent="${site.url.replace(/^https?:\/\//, '')}" target="_blank"><i class="fa-solid fa-link"></i></a>
-                                <a href="#" class="popover" data-popovercontent="${site.custom_date}"><i class="fa-solid fa-calendar-days"></i></a>
-                            </div>
+                                `
+                        if(site.url) {
+                            html += `<a href="${site.url}" class="popover" aria-label="Lien vers le site" data-popovercontent="${site.url.replace(/^https?:\/\//, '')}" target="_blank"><i class="fa-solid fa-link"></i></a>`
+                        }
+
+                        if(site.custom_date) {
+                            html += `<a href="#" class="popover site-calendar" aria-label="Date de conception" data-popovercontent="${site.custom_date}"><i class="fa-solid fa-calendar-days"></i></a>`
+                        }
+
+                        html +=`</div>
                             <ul class="card__back__keywords">
                                 ${keywordsHTML}
                             </ul>
@@ -122,8 +129,17 @@ function generateSitesList(sites) {
     }
 
     adjustSitesContainer()
-
+    initPopovers()
+    initNoClick()
     handleSiteAppear()
+}
+
+function initNoClick() {
+    const elements = document.getElementsByClassName('site-calendar')
+
+    for(const el of elements) {
+        el.addEventListener('click', e => e.preventDefault())
+    }
 }
 
 const adjustSitesContainer = () => {
@@ -141,11 +157,11 @@ const toggleDarkMode = (e) => {
     let buttonIconHTML;
     if(darkmode) {
         document.getElementsByTagName('body')[0].classList.remove('dark')
-        buttonIconHTML = '<a href="#"><i class="fa-solid fa-moon"></i></a>'
+        buttonIconHTML = '<a href="#" aria-label="Activer le thème sombre"><i class="fa-solid fa-moon"></i></a>'
     }
     else {
         document.getElementsByTagName('body')[0].classList.add('dark')
-        buttonIconHTML = '<a href="#"><i class="fa-solid fa-sun"></i></a>'
+        buttonIconHTML = '<a href="#" aria-label="Activer le thème clair"><i class="fa-solid fa-sun"></i></a>'
     }
 
     darkmode = !darkmode
