@@ -546,22 +546,22 @@ body {
   text-align: center;
 }
 .header__menu__item:nth-of-type(0n) a:before {
-  clip-path: polygon(1% 1%, 93% 1%, 94% 99%, 3% 97%);
+  clip-path: polygon(3% 2%, 99% 4%, 94% 99%, 3% 96%);
 }
 .header__menu__item:nth-of-type(1n) a:before {
-  clip-path: polygon(1% 2%, 94% 3%, 97% 97%, 2% 97%);
+  clip-path: polygon(2% 3%, 96% 1%, 94% 99%, 5% 97%);
 }
 .header__menu__item:nth-of-type(2n) a:before {
-  clip-path: polygon(5% 1%, 96% 2%, 96% 98%, 2% 97%);
+  clip-path: polygon(6% 2%, 93% 1%, 99% 98%, 1% 97%);
 }
 .header__menu__item:nth-of-type(3n) a:before {
-  clip-path: polygon(5% 2%, 98% 3%, 98% 96%, 5% 96%);
+  clip-path: polygon(7% 2%, 95% 4%, 99% 97%, 2% 99%);
 }
 .header__menu__item:nth-of-type(4n) a:before {
-  clip-path: polygon(7% 2%, 98% 1%, 96% 96%, 4% 97%);
+  clip-path: polygon(7% 1%, 95% 3%, 94% 99%, 2% 97%);
 }
 .header__menu__item:nth-of-type(5n) a:before {
-  clip-path: polygon(1% 4%, 97% 2%, 94% 99%, 7% 96%);
+  clip-path: polygon(5% 1%, 97% 4%, 95% 97%, 7% 99%);
 }
 .header__menu__item a {
   position: relative;
@@ -690,7 +690,7 @@ body {
   width: fit-content;
   margin: auto;
   padding: 18px 35px;
-  clip-path: polygon(3% 3%, 95% 4%, 96% 96%, 5% 99%);
+  clip-path: polygon(1% 1%, 93% 2%, 96% 98%, 6% 96%);
   opacity: 0;
 }
 #my-work .heading.animate {
@@ -787,7 +787,7 @@ body {
 }
 .folder__tab--all:before {
   background-color: #00FFF0;
-  clip-path: polygon(3% 0, 94% 0, 95% 100%, 1% 100%);
+  clip-path: polygon(1% 0, 97% 0, 97% 100%, 2% 100%);
 }
 @media (max-width: 768px) {
   .folder__tab--courses:not(.active):before {
@@ -796,7 +796,7 @@ body {
 }
 .folder__tab--courses:before {
   background-color: #FFC700;
-  clip-path: polygon(6% 0, 99% 0, 96% 100%, 2% 100%);
+  clip-path: polygon(1% 0, 94% 0, 96% 100%, 3% 100%);
 }
 @media (max-width: 768px) {
   .folder__tab--freelance:not(.active):before {
@@ -805,7 +805,7 @@ body {
 }
 .folder__tab--freelance:before {
   background-color: #FAFF00;
-  clip-path: polygon(6% 0, 96% 0, 96% 100%, 2% 100%);
+  clip-path: polygon(3% 0, 99% 0, 99% 100%, 3% 100%);
 }
 .folder__tab:hover, .folder__tab.active {
   margin-bottom: -1px;
@@ -889,6 +889,159 @@ body {
     transform: translateY(0);
   }
 }
+#contact {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 80px;
+  color: #FFFDED;
+  opacity: 0;
+  position: relative;
+}
+#contact.animate {
+  animation: appear 700ms 800ms both ease-in-out;
+}
+@media (max-width: 768px) {
+  #contact {
+    padding: 65px 25px;
+    width: 95%;
+  }
+}
+#contact:before {
+  z-index: -1;
+  content: " ";
+  background: #d90185;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  clip-path: polygon(1% 2%, 99% 5%, 97% 95%, 2% 97%);
+}
+@media (max-width: 768px) {
+  #contact:before {
+    clip-path: polygon(1% 1%, 98% 1%, 99% 98%, 1% 99%);
+  }
+}
+#contact:after {
+  font-family: "Font Awesome 6 Free";
+  content: "\f0e0";
+  display: block;
+  position: absolute;
+  font-size: 27vw;
+  right: 12%;
+  color: #b0016c;
+  z-index: -1;
+}
+@media (max-width: 768px) {
+  #contact:after {
+    top: 25%;
+    font-size: 45vw;
+  }
+}
+#contact__heading {
+  z-index: 1;
+  display: inline-block;
+  position: relative;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 2.5rem;
+  padding: 15px 20px;
+  color: #0045E0;
+}
+#contact__heading:before {
+  clip-path: polygon(7% 4%, 97% 3%, 95% 99%, 7% 99%);
+  z-index: -1;
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #FFFDED;
+}
+#contact .contact__email {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  width: fit-content;
+  font-family: "Passion One", cursive;
+  font-size: 1.7rem;
+  margin: 2rem auto;
+  color: #FFFDED;
+  padding: 15px;
+  transition: color 250ms ease-in-out;
+}
+@media (max-width: 768px) {
+  #contact .contact__email {
+    font-size: 6vw;
+  }
+}
+#contact .contact__email:before {
+  z-index: -1;
+  transform: scaleX(50%) scaleY(60%);
+  content: " ";
+  background: #fe0fa1;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  transition: transform 250ms ease-in-out, background 250ms ease-in-out;
+}
+#contact .contact__email:hover {
+  color: #758BFD;
+}
+#contact .contact__email:hover:before {
+  transform: scale(100%);
+  background-color: #FFFDED;
+}
+#contact .socials {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  justify-content: space-evenly;
+  width: 50%;
+  font-size: 4rem;
+}
+#contact .socials a {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  padding: 13px;
+  transition: color 250ms ease-in-out;
+  color: #FFFDED;
+}
+#contact .socials a:before {
+  z-index: -1;
+  transform: scaleX(50%) scaleY(60%);
+  content: " ";
+  background: #fe0fa1;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  transition: transform 250ms ease-in-out, background 250ms ease-in-out;
+}
+#contact .socials a:hover {
+  color: #758BFD;
+}
+#contact .socials a:hover:before {
+  transform: scale(100%);
+  background-color: #FFFDED;
+}
+
 .burger__container {
   display: none;
   justify-content: center;
@@ -951,7 +1104,7 @@ body {
 }
 .dark #my-work .folder__tab--all:before {
   background-color: #0043a8;
-  clip-path: polygon(1% 0, 94% 0, 94% 100%, 6% 100%);
+  clip-path: polygon(3% 0, 97% 0, 95% 100%, 1% 100%);
 }
 @media (max-width: 768px) {
   .dark #my-work .folder__tab--courses:not(.active):before {
@@ -960,7 +1113,7 @@ body {
 }
 .dark #my-work .folder__tab--courses:before {
   background-color: #863600;
-  clip-path: polygon(1% 0, 94% 0, 98% 100%, 6% 100%);
+  clip-path: polygon(1% 0, 95% 0, 94% 100%, 3% 100%);
 }
 .dark #my-work .folder__tab--freelance {
   color: #1f1f6d;
@@ -975,7 +1128,7 @@ body {
 }
 .dark #my-work .folder__tab--freelance:before {
   background-color: #FFC100;
-  clip-path: polygon(3% 0, 94% 0, 94% 100%, 6% 100%);
+  clip-path: polygon(6% 0, 95% 0, 97% 100%, 1% 100%);
 }
 .dark #my-work .folder__tab-content.all {
   background-color: #0043a8;
@@ -998,6 +1151,15 @@ body {
 }
 .dark .card__back__keywords li {
   background-color: darkred;
+}
+.dark #contact:before {
+  background-color: darkred;
+}
+.dark #contact:after {
+  color: #770000;
+}
+.dark #contact a:before {
+  background-color: #be0000;
 }
 
 /*# sourceMappingURL=main.css.map */
