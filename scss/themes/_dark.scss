@@ -112,4 +112,17 @@
       background-color: darkred;
     }
   }
+
+  #contact {
+    &:before {
+      background-color: darkred;
+    }
+    &:after {
+      color: darken(darkred, 4%);
+    }
+
+    a:before {
+      background-color: lighten(darkred, 10%);
+    }
+  }
 }
