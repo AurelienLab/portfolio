@@ -108,6 +108,10 @@ function generateSitesList(sites) {
                             html += `<a href="${site.url}" class="popover" aria-label="Lien vers le site" data-popovercontent="${site.url.replace(/^https?:\/\//, '')}" target="_blank"><i class="fa-solid fa-link"></i></a>`
                         }
 
+                        if(site.github) {
+                            html += `<a href="${site.github}" class="popover" aria-label="Lien vers le repo github" data-popovercontent="Aller sur le repo GitHub" target="_blank"><i class="fa-brands fa-github"></i></a>`
+                        }
+
                         if(site.custom_date) {
                             html += `<a href="#" class="popover site-calendar" aria-label="Date de conception" data-popovercontent="${site.custom_date}"><i class="fa-solid fa-calendar-days"></i></a>`
                         }
