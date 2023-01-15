@@ -33,16 +33,14 @@ function createLightbox(heading, body, footer) {
                 <span class="lightbox__close__btn"><i class="fa-solid fa-xmark"></i></span>
             </div>
             <div class="lightbox__body">
-                <h2 class="lightbox__heading">Titre de la lightbox</h2>
+                <h2 class="lightbox__heading">${heading}</h2>
                 <div class="lightbox__content">
-                    Je suis un contenu de lightbox pour le fun !
+                    ${body}
                 </div>
             </div>
             <div class="lightbox__footer">
                 <ul>
-                    <li class="card-keyword">HTML</li>
-                    <li class="card-keyword">CSS</li>
-                    <li class="card-keyword">PHP / Symfony</li>
+                    ${footer}
                 </ul>
             </div>
         </div>

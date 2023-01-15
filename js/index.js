@@ -91,7 +91,7 @@ function generateSitesList(sites) {
             keywordsHTML += `<li class="card-keyword">${keyword}</li>`
         }
         let html = `<div class="card__container initial">
-                    <div class="card">
+                    <div class="card" data-siteid="${site.id}">
                         <div class="card__front">
                             <img src="${site.imageUrl}" alt="${site.altText}">
                             <div class="front__title front__title--${categories.find(cat => site.categories.includes(cat.id) && cat.slug !== "all").slug}">
@@ -101,19 +101,19 @@ function generateSitesList(sites) {
                         </div>
                         <div class="card__back">
                             <h4>${site.title.rendered}</h4>
-                            ${site.content.rendered}
+                            ${site.excerpt.rendered}
                             <div class="card__icons">
                                 `
                         if(site.url) {
-                            html += `<a href="${site.url}" class="popover" aria-label="Lien vers le site" data-popovercontent="${site.url.replace(/^https?:\/\//, '')}" target="_blank"><i class="fa-solid fa-link"></i></a>`
+                            html += `<a href="${site.url}" class="popover" aria-label="Lien vers le site" data-lb-no-trigger data-popovercontent="${site.url.replace(/^https?:\/\//, '')}" target="_blank"><i class="fa-solid fa-link"></i></a>`
                         }
 
                         if(site.github) {
-                            html += `<a href="${site.github}" class="popover" aria-label="Lien vers le repo github" data-popovercontent="Aller sur le repo GitHub" target="_blank"><i class="fa-brands fa-github"></i></a>`
+                            html += `<a href="${site.github}" class="popover" aria-label="Lien vers le repo github" data-lb-no-trigger data-popovercontent="Aller sur le repo GitHub" target="_blank"><i class="fa-brands fa-github"></i></a>`
                         }
 
                         if(site.custom_date) {
-                            html += `<a href="#" class="popover site-calendar" aria-label="Date de conception" data-popovercontent="${site.custom_date}"><i class="fa-solid fa-calendar-days"></i></a>`
+                            html += `<a href="#" class="popover site-calendar" aria-label="Date de conception" data-lb-no-trigger data-popovercontent="${site.custom_date}"><i class="fa-solid fa-calendar-days"></i></a>`
                         }
 
                         html +=`</div>
@@ -136,6 +136,24 @@ function generateSitesList(sites) {
     initPopovers()
     initNoClick()
     handleSiteAppear()
+    handleSitesClick()
+}
+
+function handleSitesClick() {
+    const cards = document.querySelectorAll('#myWork-elements .card')
+    for(const card of cards) {
+        card.addEventListener('click', function(e) {
+            if(e.target.hasAttribute('data-lb-no-trigger') || e.target.parentNode.hasAttribute('data-lb-no-trigger')) return
+
+            const site = sites.find((site) => site.id === parseInt(e.currentTarget.dataset.siteid))
+
+            const footerHTML = site.tagList.reduce((html, value) => {
+                html += `<li class="card-keyword">${value}</li>`
+                return html
+            }, '')
+            createLightbox(site.title.rendered, site.content.rendered, footerHTML)
+        })
+    }
 }
 
 function initNoClick() {

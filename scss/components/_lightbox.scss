@@ -16,6 +16,9 @@
 }
 
 .lightbox {
+  @include tablet-only {
+    width: 90%;
+  }
   cursor: initial;
   display: flex;
   flex-direction: column;
@@ -44,6 +47,52 @@
   padding-top: 0;
   display: flex;
   flex-direction: column;
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .aligncenter {
+    display: flex;
+    justify-content: center;
+    justify-self: center;
+  }
+
+  .alignright {
+    display: flex;
+    justify-content: flex-end;
+    justify-self: flex-end;
+  }
+
+  .wp-block-media-text {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+
+    gap: 15px;
+  }
+
+  strong {
+    z-index: 1;
+    position: relative;
+    font-weight: bold;
+    &:after {
+      z-index: -1;
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0; left: -1%;
+      width: 102%;
+      height: 100%;
+      background-color: rgba(255, 255, 0, 0.16);
+      clip-path: random-clip-path(2, 2);
+    }
+  }
 }
 
 .lightbox__heading {
@@ -56,6 +105,11 @@
 
 .lightbox__footer {
   padding: 45px;
+  ul {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
 }
 
 @keyframes lb-appear {

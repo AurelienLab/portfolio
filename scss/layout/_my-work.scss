@@ -200,6 +200,10 @@
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 25px;
   grid-row-gap: 25px;
+
+  .card {
+    cursor: pointer;
+  }
 }
 
 @keyframes appear-bottom {
