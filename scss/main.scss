@@ -7,12 +7,15 @@
 @import "base/base";
 @import "base/animations";
 
+@import "components/alert";
 @import "components/popover";
 @import "components/burger-button";
 @import "components/card";
+@import "components/lightbox";
 
 @import "layout/header";
 @import "layout/about-me";
+@import "layout/competences";
 @import "layout/my-work";
 @import "layout/contact";
 @import "layout/burger-menu";

@@ -1,4 +1,6 @@
 #about-me {
+  position: relative;
+  z-index: 3;
   @include mobile-only{
     flex-direction: column;
   }
@@ -47,6 +49,7 @@
     transform: translateX(50%);
     background: #DFFDFC;
     overflow: hidden;
+    padding-bottom: 150px;
 
     &:before {
       z-index: -1;

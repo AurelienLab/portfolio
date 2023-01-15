@@ -75,34 +75,12 @@
     text-align: center;
     margin-bottom: 15px;
     font-weight: bold;
+    flex-grow: 1;
   }
 
   p {
     flex-grow: 1;
     font-size: 0.7rem;
-  }
-
-  .card__back__icons {
-    display: flex;
-    flex-direction: row;
-    gap: 15px;
-    justify-content: center;
-    padding: 15px;
-
-    a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: map-get($colors, text-dark);
-      background: #FCE762;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 0.6rem;
-      &:hover {
-        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
-      }
-    }
   }
 
   .card__back__keywords {
@@ -111,14 +89,38 @@
     flex-direction: row;
     font-size: 0.6rem;
     gap: 5px;
-    li {
-      background-color: map-get($colors, primary);
-      color: map-get($colors, text-light);
-      display: block;
-      padding: 5px 8px;
+  }
+}
+.card-keyword {
+  background-color: map-get($colors, primary);
+  color: map-get($colors, text-light);
+  display: inline-block;
+  padding: 5px 8px;
+}
+
+.card__icons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  justify-content: center;
+  padding: 15px;
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: map-get($colors, text-dark);
+    background: #FCE762;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 0.6rem;
+    &:hover {
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     }
   }
 }
+
 
 .card__front {
   position: absolute;

@@ -29,6 +29,7 @@
   max-width: 1400px;
   opacity: 0;
 
+
   &.animate {
     animation: appear 1000ms 800ms both ease-in-out;
   }
@@ -161,6 +162,7 @@
   @include mobile-only {
     padding: 10px;
     background: transparent!important;
+    box-shadow: none;
   }
   position: relative;
   top: 0;
@@ -169,6 +171,8 @@
   width: 100%;
   padding: 50px;
   transition: opacity 250ms ease-in-out, background-color 250ms ease-in-out, height 800ms ease-in-out;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+
 
   &.all {
     background-color: map-get($myWorksColor, all);
@@ -196,6 +200,10 @@
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 25px;
   grid-row-gap: 25px;
+
+  .card {
+    cursor: pointer;
+  }
 }
 
 @keyframes appear-bottom {

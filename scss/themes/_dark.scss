@@ -107,11 +107,11 @@
     background: #575757;
     color: map-get($colors, text-light);
   }
-  .card__back__keywords {
-    li {
-      background-color: darkred;
-    }
+
+  .card-keyword {
+    background-color: darkred;
   }
+
 
   #contact {
     &:before {
@@ -125,5 +125,14 @@
     a:before {
       background-color: lighten(darkred, 10%);
     }
+  }
+
+  .lightbox__container {
+    background: rgba(0, 0, 0, 0.80);
+  }
+
+  .lightbox {
+    color: white;
+    background-color: #313131;
   }
 }
