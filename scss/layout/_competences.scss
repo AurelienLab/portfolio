@@ -1,4 +1,7 @@
 #competence {
+  @include mobile-only {
+    flex-direction: column;
+  }
   z-index: 4;
   position: relative;
   display: flex;
@@ -15,6 +18,9 @@
   }
 
   .competence__category {
+    @include mobile-only{
+      width: 100%;
+    }
     width: 33.333333333%;
     display: flex;
     flex-direction: column;

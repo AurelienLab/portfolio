@@ -162,6 +162,7 @@
   @include mobile-only {
     padding: 10px;
     background: transparent!important;
+    box-shadow: none;
   }
   position: relative;
   top: 0;
