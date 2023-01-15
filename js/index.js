@@ -92,9 +92,9 @@ function generateSitesList(sites) {
         }
         let html = `<div class="card__container initial">
                     <div class="card" data-siteid="${site.id}">
-                        <div class="card__front">
-                            <img src="${site.imageUrl}" alt="${site.altText}">
-                            <div class="front__title front__title--${categories.find(cat => site.categories.includes(cat.id) && cat.slug !== "all").slug}">
+                        <div class="card__front" data-lb-no-trigger>
+                            <img src="${site.imageUrl}" alt="${site.altText}" data-lb-no-trigger>
+                            <div class="front__title front__title--${categories.find(cat => site.categories.includes(cat.id) && cat.slug !== "all").slug}" data-lb-no-trigger>
                                 <div class="shape"></div>
                                 <h4>${site.title.rendered}</h4>
                             </div>
