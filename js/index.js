@@ -88,7 +88,7 @@ function generateSitesList(sites) {
     for(const site of sites) {
         let keywordsHTML = ""
         for(const keyword of site.tagList) {
-            keywordsHTML += `<li>${keyword}</li>`
+            keywordsHTML += `<li class="card-keyword">${keyword}</li>`
         }
         let html = `<div class="card__container initial">
                     <div class="card">
@@ -102,7 +102,7 @@ function generateSitesList(sites) {
                         <div class="card__back">
                             <h4>${site.title.rendered}</h4>
                             ${site.content.rendered}
-                            <div class="card__back__icons">
+                            <div class="card__icons">
                                 `
                         if(site.url) {
                             html += `<a href="${site.url}" class="popover" aria-label="Lien vers le site" data-popovercontent="${site.url.replace(/^https?:\/\//, '')}" target="_blank"><i class="fa-solid fa-link"></i></a>`
