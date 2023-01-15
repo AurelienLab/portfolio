@@ -1,6 +1,7 @@
 #competence {
   @include mobile-only {
     flex-direction: column;
+    width: 90%;
   }
   z-index: 4;
   position: relative;
