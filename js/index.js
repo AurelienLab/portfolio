@@ -147,11 +147,29 @@ function handleSitesClick() {
 
             const site = sites.find((site) => site.id === parseInt(e.currentTarget.dataset.siteid))
 
+            let bodyHTML = `
+            <div class="card__icons">
+                                `
+                        if(site.url) {
+                            bodyHTML += `<a href="${site.url}" class="popover" aria-label="Lien vers le site" data-lb-no-trigger data-popovercontent="${site.url.replace(/^https?:\/\//, '')}" target="_blank"><i class="fa-solid fa-link"></i></a>`
+                        }
+
+                        if(site.github) {
+                            bodyHTML += `<a href="${site.github}" class="popover" aria-label="Lien vers le repo github" data-lb-no-trigger data-popovercontent="Aller sur le repo GitHub" target="_blank"><i class="fa-brands fa-github"></i></a>`
+                        }
+
+                        if(site.custom_date) {
+                            bodyHTML += `<a href="#" class="popover site-calendar" aria-label="Date de conception" data-lb-no-trigger data-popovercontent="${site.custom_date}"><i class="fa-solid fa-calendar-days"></i></a>`
+                        }
+
+                        bodyHTML +=`</div>`
+
             const footerHTML = site.tagList.reduce((html, value) => {
                 html += `<li class="card-keyword">${value}</li>`
                 return html
             }, '')
-            createLightbox(site.title.rendered, site.content.rendered, footerHTML)
+            createLightbox(site.title.rendered, site.content.rendered + bodyHTML, footerHTML)
+            initPopovers()
         })
     }
 }
