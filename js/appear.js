@@ -4,7 +4,6 @@ function display(entries, observer) {
     for (const entry of entries) {
 
         let ratio = entry.intersectionRatio;
-        if(entry.target.id === "my-work") console.log(entry)
         if (ratio > 0) {
             entry.target.classList.add('animate')
         }
