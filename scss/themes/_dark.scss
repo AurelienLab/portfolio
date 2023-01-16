@@ -21,6 +21,7 @@
 
     &:hover, &.active {
       a {
+        color: darkred;
         &:before {
           background: map-get($colors, text-light);
         }
