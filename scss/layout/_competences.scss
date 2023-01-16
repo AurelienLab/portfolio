@@ -37,9 +37,12 @@
     color: white;
 
     .icon {
+      @include mobile-only {
+        font-size: 170px;
+      }
       display: block;
       position: absolute;
-      font-size: 10vw;
+      font-size: min(10vw, 150px);
       right: 12%;
       z-index: -1;
     }

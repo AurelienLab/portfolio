@@ -46,6 +46,7 @@
       padding-right: 30px;
       padding-bottom: 120px;
     }
+    position: relative;
     width: 50%;
     color: map-get($colors, tertiary);
     padding: 60px;
@@ -56,11 +57,15 @@
     padding-bottom: 150px;
 
     &:before {
+      @include mobile-only {
+        font-size: 300px;
+        top: 10%;
+      }
       z-index: -1;
       content: "?";
       position: absolute;
       right: 10%;
-      top:-10%;
+      top:0;
       font-family: $heading-font;
       font-size: 20vw;
       color: #b4fffe;
