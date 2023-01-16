@@ -23,7 +23,7 @@
   @include tablet-only {
     width: 100%;
   }
-  min-height: 100px;
+  min-height: 250px;
   margin: 30px auto;
   margin-bottom: 50px;
   width: 90%;
@@ -150,7 +150,7 @@
 }
 
 .folder__content {
-  position: relative;
+  //position: relative;
 }
 
 .folder__tab-content {
@@ -161,7 +161,6 @@
   }
   position: relative;
   top: 0;
-  height: 0;
   left: 0;
   width: 100%;
   padding: 50px;

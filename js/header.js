@@ -221,3 +221,47 @@ function animateHeader() {
         }
     }
 }
+
+let followObserver = new IntersectionObserver(updateFollow, {
+    threshold: 0.4
+});
+
+let myworkFollowObserver = new IntersectionObserver(updateFollow, {
+    threshold: 0.18,
+});
+
+function setupFollow() {
+    const followTriggers = document.getElementsByClassName('follow')
+    for(const el of followTriggers) {
+        if(el.id === "my-work") {
+            myworkFollowObserver.observe(el)
+            continue
+        }
+        followObserver.observe(el)
+    }
+}
+
+function updateFollow(entries, observer) {
+    for (const entry of entries) {
+
+        let ratio = entry.intersectionRatio;
+        let id = entry.target.id
+        if(id === "my-work") {
+
+        }
+        if (ratio > observer.thresholds[0] && ratio < 1) {
+            const activeLinks = document.querySelectorAll(`.header__menu__item.active`)
+            const concernedLinks = document.querySelectorAll(`.header__menu__item a[href="#${id}"]`)
+
+            for(const listItem of activeLinks) {
+                listItem.classList.remove('active')
+            }
+
+            for(const link of concernedLinks) {
+                link.parentElement.classList.add('active')
+            }
+        }
+    }
+}
+
+setupFollow()

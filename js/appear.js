@@ -11,7 +11,7 @@ function display(entries, observer) {
 }
 
 let observer = new IntersectionObserver(display, {
-    threshold: [0, 1]
+    threshold: [0.2, 1]
 });
 
 function setObservers() {

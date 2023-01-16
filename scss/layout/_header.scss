@@ -140,7 +140,7 @@
 
   &:hover, &.active {
     a {
-      color: map-get($colors, secondary);
+      color: map-get($colors, primary);
       &:before {
         transform: scaleY(1) scaleX(1);
         background: map-get($colors, text-light);

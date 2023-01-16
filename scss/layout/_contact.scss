@@ -39,11 +39,12 @@
   }
 
   &:after {
-    font-family: "Font Awesome 6 Free";
-    content: '\f55d';
+    //font-family: "Font Awesome 6 Free";
+    font: var(--fa-font-regular);
+    content: '\f0e0';
     display: block;
     position: absolute;
-    font-size: 27vw;
+    font-size: min(27vw, 400px);
     right: 12%;
     color: darken(map-get($colors, primary), 8%);
     z-index: -1;
