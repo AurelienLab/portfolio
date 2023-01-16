@@ -90,6 +90,25 @@
     gap: 15px;
   }
 
+  .wp-block-gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+
+    .wp-block-image {
+      width: 30%;
+    }
+  }
+
+  figcaption {
+    font-size: 0.6rem;
+    font-style: italic;
+    text-align: center;
+  }
+
   strong {
     z-index: 1;
     position: relative;

@@ -1,8 +1,9 @@
 #my-work {
   margin-top: 60px;
   margin-bottom: 4rem;
-  scroll-margin-top: 90px;
+  //scroll-margin-top: 90px;
   width: 100%;
+  opacity: 0;
   .heading {
     color: map-get($colors, text-light);
     text-align: center;
@@ -11,11 +12,10 @@
     margin: auto;
     padding: 18px 35px;
     clip-path: random-clip-path();
-    opacity: 0;
+  }
 
-    &.animate {
-      animation: appear 700ms 800ms both ease-in-out;
-    }
+  &.animate {
+    animation: appear 800ms both ease-in-out;
   }
 }
 
@@ -23,16 +23,11 @@
   @include tablet-only {
     width: 100%;
   }
+  min-height: 100px;
   margin: 30px auto;
   margin-bottom: 50px;
   width: 90%;
   max-width: 1400px;
-  opacity: 0;
-
-
-  &.animate {
-    animation: appear 1000ms 800ms both ease-in-out;
-  }
 }
 
 .folder__tab-list {
@@ -203,17 +198,6 @@
 
   .card {
     cursor: pointer;
-  }
-}
-
-@keyframes appear-bottom {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
   }
 }
 

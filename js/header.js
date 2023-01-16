@@ -131,7 +131,7 @@ function layout2() {
 window.history.scrollRestoration = 'manual'
 window.onscroll = () => {
     animateHeader()
-    startAppeareance()
+    // startAppeareance()
 }
 window.onresize = () => {
     adjustSitesContainer()

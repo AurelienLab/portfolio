@@ -1,32 +1,22 @@
 const elementsToAppear = document.getElementsByClassName('appear')
 
-function inView(element) {
-    // get window height
-    const windowHeight = window.innerHeight;
-    // get number of pixels that the document is scrolled
-    const scrollY = window.scrollY;
+function display(entries, observer) {
+    for (const entry of entries) {
 
-    // get current scroll position (distance from the top of the page to the bottom of the current viewport)
-    const scrollPosition = scrollY + windowHeight;
-    // get element position (distance from the top of the page to the bottom of the element)
-    const elementPosition = element.getBoundingClientRect().top + element.clientHeight;
-
-    // is scroll position greater than element position? (is element in view?)
-    return scrollPosition > elementPosition;
+        let ratio = entry.intersectionRatio;
+        if(entry.target.id === "my-work") console.log(entry)
+        if (ratio > 0) {
+            entry.target.classList.add('animate')
+        }
+    }
 }
 
-// animate element when it is in view
-function startAppeareance() {
+let observer = new IntersectionObserver(display, {
+    threshold: [0, 1]
+});
 
+function setObservers() {
     for(const el of elementsToAppear) {
-        if(animate) {
-            if(inView(el)) {
-                el.classList.add('animate')
-            }
-        }
-        else {
-            el.classList.add('animate')
-        }
-
+        observer.observe(el)
     }
 }
