@@ -579,7 +579,7 @@ body {
   width: 102%;
   height: 100%;
   background-color: rgba(255, 255, 0, 0.16);
-  clip-path: polygon(1% 2%, 99% 2%, 99% 98%, 1% 98%);
+  clip-path: polygon(1% 1%, 99% 2%, 98% 98%, 1% 98%);
 }
 
 .lightbox__heading {
@@ -714,22 +714,22 @@ body {
   text-align: center;
 }
 .header__menu__item:nth-of-type(0n) a:before {
-  clip-path: polygon(3% 1%, 93% 4%, 95% 97%, 3% 97%);
+  clip-path: polygon(6% 2%, 96% 2%, 99% 97%, 2% 97%);
 }
 .header__menu__item:nth-of-type(1n) a:before {
-  clip-path: polygon(3% 2%, 96% 3%, 95% 96%, 1% 96%);
+  clip-path: polygon(7% 1%, 94% 4%, 98% 98%, 3% 98%);
 }
 .header__menu__item:nth-of-type(2n) a:before {
-  clip-path: polygon(1% 2%, 98% 2%, 94% 97%, 3% 96%);
+  clip-path: polygon(2% 1%, 96% 1%, 96% 99%, 2% 96%);
 }
 .header__menu__item:nth-of-type(3n) a:before {
-  clip-path: polygon(6% 2%, 93% 1%, 96% 96%, 2% 96%);
+  clip-path: polygon(7% 1%, 98% 3%, 94% 99%, 5% 99%);
 }
 .header__menu__item:nth-of-type(4n) a:before {
-  clip-path: polygon(1% 1%, 94% 3%, 99% 98%, 6% 97%);
+  clip-path: polygon(5% 1%, 93% 2%, 99% 97%, 1% 99%);
 }
 .header__menu__item:nth-of-type(5n) a:before {
-  clip-path: polygon(5% 3%, 98% 1%, 98% 98%, 5% 97%);
+  clip-path: polygon(3% 1%, 94% 2%, 96% 96%, 2% 97%);
 }
 .header__menu__item a {
   position: relative;
@@ -862,6 +862,7 @@ body {
   margin: auto;
   margin-top: -80px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  opacity: 0;
 }
 @media (max-width: 768px) {
   #competence {
@@ -872,6 +873,9 @@ body {
 #competence .heading {
   width: 100%;
   text-align: center;
+}
+#competence.animate {
+  animation: appear-bottom 800ms ease-in-out both;
 }
 #competence .competence__category {
   width: 33.333333333%;
@@ -911,11 +915,21 @@ body {
   border-color: #232323;
 }
 
+@keyframes appear-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 #my-work {
   margin-top: 60px;
   margin-bottom: 4rem;
-  scroll-margin-top: 90px;
   width: 100%;
+  opacity: 0;
 }
 #my-work .heading {
   color: #FFFDED;
@@ -924,27 +938,23 @@ body {
   width: fit-content;
   margin: auto;
   padding: 18px 35px;
-  clip-path: polygon(4% 4%, 98% 1%, 98% 97%, 2% 98%);
-  opacity: 0;
+  clip-path: polygon(5% 4%, 93% 3%, 93% 99%, 6% 99%);
 }
-#my-work .heading.animate {
-  animation: appear 700ms 800ms both ease-in-out;
+#my-work.animate {
+  animation: appear 800ms both ease-in-out;
 }
 
 .folder {
+  min-height: 100px;
   margin: 30px auto;
   margin-bottom: 50px;
   width: 90%;
   max-width: 1400px;
-  opacity: 0;
 }
 @media (max-width: 1024px) {
   .folder {
     width: 100%;
   }
-}
-.folder.animate {
-  animation: appear 1000ms 800ms both ease-in-out;
 }
 
 .folder__tab-list {
@@ -1021,7 +1031,7 @@ body {
 }
 .folder__tab--all:before {
   background-color: #00FFF0;
-  clip-path: polygon(6% 0, 98% 0, 95% 100%, 2% 100%);
+  clip-path: polygon(2% 0, 98% 0, 97% 100%, 1% 100%);
 }
 @media (max-width: 768px) {
   .folder__tab--courses:not(.active):before {
@@ -1030,7 +1040,7 @@ body {
 }
 .folder__tab--courses:before {
   background-color: #FFC700;
-  clip-path: polygon(4% 0, 99% 0, 99% 100%, 5% 100%);
+  clip-path: polygon(3% 0, 95% 0, 95% 100%, 4% 100%);
 }
 @media (max-width: 768px) {
   .folder__tab--freelance:not(.active):before {
@@ -1039,7 +1049,7 @@ body {
 }
 .folder__tab--freelance:before {
   background-color: #FAFF00;
-  clip-path: polygon(4% 0, 94% 0, 96% 100%, 5% 100%);
+  clip-path: polygon(6% 0, 97% 0, 95% 100%, 5% 100%);
 }
 .folder__tab:hover, .folder__tab.active {
   margin-bottom: -1px;
@@ -1118,16 +1128,6 @@ body {
     transform: translateY(0);
   }
 }
-@keyframes appear-bottom {
-  from {
-    opacity: 0;
-    transform: translateY(100%);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 #contact {
   width: 90%;
   max-width: 1200px;
@@ -1142,7 +1142,7 @@ body {
   filter: drop-shadow(-1px 5px 15px rgba(0, 0, 0, 0.42));
 }
 #contact.animate {
-  animation: appear 700ms 800ms both ease-in-out;
+  animation: appear 800ms both ease-in-out;
 }
 @media (max-width: 768px) {
   #contact {
@@ -1161,11 +1161,11 @@ body {
   right: 0;
   position: absolute;
   margin: auto;
-  clip-path: polygon(2% 5%, 97% 1%, 99% 96%, 3% 96%);
+  clip-path: polygon(3% 1%, 98% 5%, 97% 99%, 2% 95%);
 }
 @media (max-width: 768px) {
   #contact:before {
-    clip-path: polygon(1% 1%, 99% 1%, 98% 98%, 2% 98%);
+    clip-path: polygon(2% 1%, 99% 2%, 99% 99%, 1% 98%);
   }
 }
 #contact:after {
@@ -1195,7 +1195,7 @@ body {
   color: #0045E0;
 }
 #contact__heading:before {
-  clip-path: polygon(5% 3%, 95% 3%, 96% 96%, 3% 99%);
+  clip-path: polygon(3% 2%, 98% 4%, 98% 96%, 6% 99%);
   z-index: -1;
   content: " ";
   display: block;
@@ -1344,7 +1344,7 @@ body {
 }
 .dark #my-work .folder__tab--all:before {
   background-color: #0043a8;
-  clip-path: polygon(5% 0, 99% 0, 95% 100%, 3% 100%);
+  clip-path: polygon(6% 0, 98% 0, 95% 100%, 1% 100%);
 }
 @media (max-width: 768px) {
   .dark #my-work .folder__tab--courses:not(.active):before {
@@ -1353,7 +1353,7 @@ body {
 }
 .dark #my-work .folder__tab--courses:before {
   background-color: #863600;
-  clip-path: polygon(2% 0, 97% 0, 95% 100%, 3% 100%);
+  clip-path: polygon(3% 0, 95% 0, 97% 100%, 5% 100%);
 }
 .dark #my-work .folder__tab--freelance {
   color: #1f1f6d;
@@ -1368,7 +1368,7 @@ body {
 }
 .dark #my-work .folder__tab--freelance:before {
   background-color: #FFC100;
-  clip-path: polygon(1% 0, 97% 0, 96% 100%, 6% 100%);
+  clip-path: polygon(6% 0, 98% 0, 97% 100%, 2% 100%);
 }
 .dark #my-work .folder__tab-content.all {
   background-color: #0043a8;

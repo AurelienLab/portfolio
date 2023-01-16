@@ -13,9 +13,14 @@
   margin: auto;
   margin-top: -80px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  opacity: 0;
   .heading {
     width: 100%;
     text-align: center;
+  }
+
+  &.animate {
+    animation: appear-bottom 800ms ease-in-out both;
   }
 
   .competence__category {
@@ -57,5 +62,16 @@
       background-color: rgb(245, 247, 73);
       color: #232323;
     }
+  }
+}
+
+@keyframes appear-bottom {
+  from {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

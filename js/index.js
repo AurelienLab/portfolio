@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.log(error))
 
     initHeader()
-    startAppeareance()
-
+    // startAppeareance()
+    setObservers()
     window.onbeforeunload = () => window.sessionStorage.setItem('scrollpos', window.scrollY)
 })
 function insertAboutMe(page) {

@@ -1,6 +1,6 @@
 #contact {
   &.animate {
-    animation: appear 700ms 800ms both ease-in-out;
+    animation: appear 800ms both ease-in-out;
   }
 
   @include mobile-only {
