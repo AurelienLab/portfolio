@@ -1,33 +1,35 @@
 function closeListeners() {
-    const closeBtns = document.querySelectorAll(".lightbox__close__btn, .lightbox__close__btn i")
-    const overlay = document.querySelector('.lightbox__overlay')
+  const closeBtns = document.querySelectorAll(
+    ".lightbox__close__btn, .lightbox__close__btn i"
+  );
+  const overlay = document.querySelector(".lightbox__overlay");
 
-    for(const el of [...closeBtns, overlay]) {
-        el.addEventListener('click', closeLightbox)
-    }
+  for (const el of [...closeBtns, overlay]) {
+    el.addEventListener("click", closeLightbox);
+  }
 }
 
 function closeLightbox(e) {
-    if(e.target !== this) {
-        return
+  if (e.target !== this) {
+    return;
+  }
+  document.body.style.overflow = "scroll";
+  const lightbox = document.querySelector(".lightbox__overlay");
+  let fadeEffect = setInterval(function () {
+    if (!lightbox.style.opacity) {
+      lightbox.style.opacity = 1;
     }
-    document.body.style.overflow = "scroll"
-    const lightbox = document.querySelector('.lightbox__overlay')
-    let fadeEffect = setInterval(function () {
-        if (!lightbox.style.opacity) {
-            lightbox.style.opacity = 1;
-        }
-        if (lightbox.style.opacity > 0) {
-            lightbox.style.opacity -= 0.1;
-        } else {
-            clearInterval(fadeEffect);
-            lightbox.remove()
-        }
-    }, 10)
+    if (lightbox.style.opacity > 0) {
+      lightbox.style.opacity -= 0.1;
+    } else {
+      clearInterval(fadeEffect);
+      lightbox.remove();
+    }
+  }, 10);
 }
 
 function createLightbox(heading, body, footer) {
-    const html = `
+  const html = `
     <div class="lightbox__overlay">
         <div class="lightbox__container">
             <div class="lightbox">
@@ -48,12 +50,11 @@ function createLightbox(heading, body, footer) {
         </div>
         </div>
     </div>
-    `
+    `;
 
-    const placeHolder = document.createElement('div')
-    placeHolder.innerHTML = html
-    document.body.appendChild(placeHolder.firstElementChild)
-    document.body.style.overflow = "hidden"
-    closeListeners()
-
+  const placeHolder = document.createElement("div");
+  placeHolder.innerHTML = html;
+  document.body.appendChild(placeHolder.firstElementChild);
+  document.body.style.overflow = "hidden";
+  closeListeners();
 }

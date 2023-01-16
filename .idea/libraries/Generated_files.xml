@@ -1,0 +1,24 @@
+<component name="libraryTable">
+  <library name="Generated files" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/js/appear.min.js" />
+        <item url="file://$PROJECT_DIR$/js/data.min.js" />
+        <item url="file://$PROJECT_DIR$/js/header.min.js" />
+        <item url="file://$PROJECT_DIR$/js/index.min.js" />
+        <item url="file://$PROJECT_DIR$/js/lightbox.min.js" />
+        <item url="file://$PROJECT_DIR$/js/popover.min.js" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/js/appear.min.js" />
+      <root url="file://$PROJECT_DIR$/js/data.min.js" />
+      <root url="file://$PROJECT_DIR$/js/header.min.js" />
+      <root url="file://$PROJECT_DIR$/js/index.min.js" />
+      <root url="file://$PROJECT_DIR$/js/lightbox.min.js" />
+      <root url="file://$PROJECT_DIR$/js/popover.min.js" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
